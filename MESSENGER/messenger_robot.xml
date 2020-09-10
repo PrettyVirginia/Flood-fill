@@ -1,2 +1,4 @@
 <Robot>
-  <Kinbody name="MESSE
+  <Kinbody name="MESSENGER">
+    <body type="dynamic">
+      <geom
