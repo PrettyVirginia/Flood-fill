@@ -1,4 +1,5 @@
 <Robot>
   <Kinbody name="MESSENGER">
     <body type="dynamic">
-      <geom
+      <geom type="trimesh" modifiable="false">
+	<data>MESSE
