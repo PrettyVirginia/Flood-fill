@@ -2,4 +2,5 @@
   <Kinbody name="MESSENGER">
     <body type="dynamic">
       <geom type="trimesh" modifiable="false">
-	<data>MESSE
+	<data>MESSENGER.stl 0.001</data>
+	<render>MESSENGER.stl 0.
