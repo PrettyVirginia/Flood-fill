@@ -5,4 +5,6 @@
 	<data>MESSENGER.stl 0.001</data>
 	<render>MESSENGER.stl 0.001</render>
       </geom>
-    </body
+    </body>
+  </Kinbody>
+</Robot>
