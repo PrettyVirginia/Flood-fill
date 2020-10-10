@@ -5,4 +5,6 @@ from toppso3.SO3RRT import *
 from toppso3 import Utils
 from toppso3 import lie
 
-i
+import time
+import TOPP
+from TOPP impor
