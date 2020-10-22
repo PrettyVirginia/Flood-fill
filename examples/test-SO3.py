@@ -7,4 +7,6 @@ from toppso3 import lie
 
 import time
 import TOPP
-from TOPP impor
+from TOPP import TOPPpy
+from TOPP import TOPPbindings
+from TO
