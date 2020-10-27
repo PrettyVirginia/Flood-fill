@@ -9,4 +9,6 @@ import time
 import TOPP
 from TOPP import TOPPpy
 from TOPP import TOPPbindings
-from TO
+from TOPP import Trajectory
+from pylab import *
+import scipy.
