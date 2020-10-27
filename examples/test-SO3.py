@@ -20,4 +20,5 @@ ion()
 
 
 env = Environment()
-# This model was downloaded fr
+# This model was downloaded from http://nasa3d.arc.nasa.gov/models/printable
+env.L
