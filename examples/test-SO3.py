@@ -11,4 +11,11 @@ from TOPP import TOPPpy
 from TOPP import TOPPbindings
 from TOPP import Trajectory
 from pylab import *
-import scipy.
+import scipy.optimize
+from mpl_toolkits.mplot3d import Axes3D
+
+
+ion()
+
+
+
