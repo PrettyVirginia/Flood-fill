@@ -21,4 +21,5 @@ ion()
 
 env = Environment()
 # This model was downloaded from http://nasa3d.arc.nasa.gov/models/printable
-env.L
+env.Load("../MESSENGER/messengerWithEnv.xml")
+env.SetView
