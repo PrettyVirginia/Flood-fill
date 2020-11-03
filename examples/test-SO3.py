@@ -29,4 +29,6 @@ robot = env.GetBodies()[0]
 
 phi = pi
 
-R0 
+R0 = eye(3)
+q0 = quatFromRotationMatrix(R0)
+omega0 
