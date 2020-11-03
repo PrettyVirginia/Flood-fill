@@ -34,4 +34,8 @@ q0 = quatFromRotationMatrix(R0)
 omega0 = zeros(3)
 
 q1 = array([cos(phi/2.),0,0,sin(phi/2.)])
-omega1 = ze
+omega1 = zeros(3)
+
+taumax = ones(3)
+vmax = ones(3)
+inertia 
