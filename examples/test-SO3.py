@@ -38,4 +38,5 @@ omega1 = zeros(3)
 
 taumax = ones(3)
 vmax = ones(3)
-inertia 
+inertia = eye(3)
+################################## BiRRT planner ##
