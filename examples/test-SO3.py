@@ -42,4 +42,5 @@ inertia = eye(3)
 ################################## BiRRT planner #################################
 
 vertex_beg = Vertex(Config(q0,omega0), FW)
-vertex_end = Verte
+vertex_end = Vertex(Config(q1,omega1), BW)
+biRRTinstance = RRTPlanner(ve
