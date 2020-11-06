@@ -43,4 +43,7 @@ inertia = eye(3)
 
 vertex_beg = Vertex(Config(q0,omega0), FW)
 vertex_end = Vertex(Config(q1,omega1), BW)
-biRRTinstance = RRTPlanner(ve
+biRRTinstance = RRTPlanner(vertex_beg, vertex_end, robot)
+
+allottedtime = 600
+biRRT
