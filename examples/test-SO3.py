@@ -41,4 +41,5 @@ vmax = ones(3)
 inertia = eye(3)
 ################################## BiRRT planner #################################
 
-vertex_
+vertex_beg = Vertex(Config(q0,omega0), FW)
+vertex_end = Verte
