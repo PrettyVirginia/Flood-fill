@@ -46,4 +46,6 @@ vertex_end = Vertex(Config(q1,omega1), BW)
 biRRTinstance = RRTPlanner(vertex_beg, vertex_end, robot)
 
 allottedtime = 600
-biRRT
+biRRTinstance.Run(allottedtime)
+
+Rlist = biRRTinstance.GenFinalRotationMat
