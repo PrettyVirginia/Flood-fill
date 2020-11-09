@@ -48,4 +48,5 @@ biRRTinstance = RRTPlanner(vertex_beg, vertex_end, robot)
 allottedtime = 600
 biRRTinstance.Run(allottedtime)
 
-Rlist = biRRTinstance.GenFinalRotationMat
+Rlist = biRRTinstance.GenFinalRotationMatrixList()
+Trajlist = biRRTinstance.GenFinalTrajList()
