@@ -50,3 +50,8 @@ biRRTinstance.Run(allottedtime)
 
 Rlist = biRRTinstance.GenFinalRotationMatrixList()
 Trajlist = biRRTinstance.GenFinalTrajList()
+lietraj = lie.LieTraj(Rlist,Trajlist)
+
+ion()
+
+## Visuali
