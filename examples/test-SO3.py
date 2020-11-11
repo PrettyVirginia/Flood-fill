@@ -56,4 +56,5 @@ ion()
 
 ## Visualize 
 # M = eye(4)
-# for t in linspa
+# for t in linspace(0, lietraj.duration, 1000): 
+#   
