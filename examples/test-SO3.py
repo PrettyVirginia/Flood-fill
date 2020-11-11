@@ -54,4 +54,6 @@ lietraj = lie.LieTraj(Rlist,Trajlist)
 
 ion()
 
-## Visuali
+## Visualize 
+# M = eye(4)
+# for t in linspa
