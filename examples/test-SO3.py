@@ -59,4 +59,6 @@ ion()
 # for t in linspace(0, lietraj.duration, 1000): 
 #     M[:3,:3] = lietraj.EvalRotation(t)
 #     robot.SetTransform(M)
-#     isincollision = (env.CheckCollision(robot, CollisionRepo
+#     isincollision = (env.CheckCollision(robot, CollisionReport()))
+#     if (isincollision):
+#         print
