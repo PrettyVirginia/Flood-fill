@@ -61,4 +61,5 @@ ion()
 #     robot.SetTransform(M)
 #     isincollision = (env.CheckCollision(robot, CollisionReport()))
 #     if (isincollision):
-#         print
+#         print "in collision", " ", t, "/" , lietraj.duration
+#    
