@@ -62,4 +62,6 @@ ion()
 #     isincollision = (env.CheckCollision(robot, CollisionReport()))
 #     if (isincollision):
 #         print "in collision", " ", t, "/" , lietraj.duration
-#    
+#     time.sleep(0.01)
+
+################################
