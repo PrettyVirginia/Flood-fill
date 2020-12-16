@@ -64,4 +64,6 @@ ion()
 #         print "in collision", " ", t, "/" , lietraj.duration
 #     time.sleep(0.01)
 
-################################# TOPP ##########################################
+################################# TOPP #############################################
+discrtimestep= 1e-2
+constraintsstring = str(discrtimestep)
