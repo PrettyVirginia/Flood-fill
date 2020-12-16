@@ -67,3 +67,4 @@ ion()
 ################################# TOPP #############################################
 discrtimestep= 1e-2
 constraintsstring = str(discrtimestep)
+constraintsstring += "\n" + ' '.join([str(v) 
