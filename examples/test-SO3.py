@@ -67,4 +67,6 @@ ion()
 ################################# TOPP #############################################
 discrtimestep= 1e-2
 constraintsstring = str(discrtimestep)
-constraintsstring += "\n" + ' '.join([str(v) 
+constraintsstring += "\n" + ' '.join([str(v) for v in taumax])
+for v in inertia:
+    const
