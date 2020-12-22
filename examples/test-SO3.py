@@ -69,4 +69,4 @@ discrtimestep= 1e-2
 constraintsstring = str(discrtimestep)
 constraintsstring += "\n" + ' '.join([str(v) for v in taumax])
 for v in inertia:
-    const
+    constraintsstring += "\n" + ' '.join([str(i) for i in v])
