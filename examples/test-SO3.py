@@ -71,4 +71,6 @@ constraintsstring += "\n" + ' '.join([str(v) for v in taumax])
 for v in inertia:
     constraintsstring += "\n" + ' '.join([str(i) for i in v])
 # Note that, when Inertia is an Identity matrix, angular accelerations are the same as torques
-print
+print "\033[93mRunning TOPP", "\033[0m"
+
+t_topp_start = 
