@@ -73,4 +73,5 @@ for v in inertia:
 # Note that, when Inertia is an Identity matrix, angular accelerations are the same as torques
 print "\033[93mRunning TOPP", "\033[0m"
 
-t_topp_start = 
+t_topp_start = time.time()
+traj = Trajectory.PiecewisePolynomial
