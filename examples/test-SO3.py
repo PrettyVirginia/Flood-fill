@@ -74,4 +74,6 @@ for v in inertia:
 print "\033[93mRunning TOPP", "\033[0m"
 
 t_topp_start = time.time()
-traj = Trajectory.PiecewisePolynomialTrajectory.FromString(Utils.TrajStringFromTrajList(T
+traj = Trajectory.PiecewisePolynomialTrajectory.FromString(Utils.TrajStringFromTrajList(Trajlist))
+
+abc = TOPPbindings.RunComputeSO3Constraints(str(tra
