@@ -78,4 +78,4 @@ traj = Trajectory.PiecewisePolynomialTrajectory.FromString(Utils.TrajStringFromT
 
 abc = TOPPbindings.RunComputeSO3Constraints(str(traj),constraintsstring)
 a,b,c = lie.Extractabc(abc)
-# a,b,c = lie.ComputeSO3Constraints(traj, taumax, dis
+# a,b,c = lie.ComputeSO3Constraints(traj, taumax, discrtimestep) #This is the implementation of computing SO3C
