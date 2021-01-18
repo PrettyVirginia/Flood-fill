@@ -78,4 +78,5 @@ traj = Trajectory.PiecewisePolynomialTrajectory.FromString(Utils.TrajStringFromT
 
 abc = TOPPbindings.RunComputeSO3Constraints(str(traj),constraintsstring)
 a,b,c = lie.Extractabc(abc)
-# a,b,c = lie.ComputeSO3Constraints(traj, taumax, discrtimestep) #This is the implementation of computing SO3C
+# a,b,c = lie.ComputeSO3Constraints(traj, taumax, discrtimestep) #This is the implementation of computing SO3Constraints in Python
+topp_inst = TOPP.QuadraticCo
