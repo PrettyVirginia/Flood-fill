@@ -83,4 +83,6 @@ topp_inst = TOPP.QuadraticConstraints(traj, discrtimestep, vmax, list(a), list(b
 
 x = topp_inst.solver
 
-ret = x.RunComputeProfi
+ret = x.RunComputeProfiles(0,0)
+if ret == 1:
+    x.ReparameterizeTrajectory()
