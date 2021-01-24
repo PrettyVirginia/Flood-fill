@@ -80,3 +80,7 @@ abc = TOPPbindings.RunComputeSO3Constraints(str(traj),constraintsstring)
 a,b,c = lie.Extractabc(abc)
 # a,b,c = lie.ComputeSO3Constraints(traj, taumax, discrtimestep) #This is the implementation of computing SO3Constraints in Python
 topp_inst = TOPP.QuadraticConstraints(traj, discrtimestep, vmax, list(a), list(b), list(c))
+
+x = topp_inst.solver
+
+ret = x.RunComputeProfi
