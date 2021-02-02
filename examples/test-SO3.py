@@ -88,4 +88,4 @@ if ret == 1:
     x.ReparameterizeTrajectory()
     x.WriteResultTrajectory()
 
-traj1 = Trajectory
+traj1 = Trajectory.PiecewisePolynomialTrajectory.FromString(x.restra
