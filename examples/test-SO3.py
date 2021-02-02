@@ -86,3 +86,6 @@ x = topp_inst.solver
 ret = x.RunComputeProfiles(0,0)
 if ret == 1:
     x.ReparameterizeTrajectory()
+    x.WriteResultTrajectory()
+
+traj1 = Trajectory
