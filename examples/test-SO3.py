@@ -91,4 +91,5 @@ if ret == 1:
 traj1 = Trajectory.PiecewisePolynomialTrajectory.FromString(x.restrajectorystring)
 t_topp_end = time.time()
 
-print "\033[1;32mRunning 
+print "\033[1;32mRunning time:",t_topp_end-t_topp_start, "sec.\033[0m"
+print "\03
