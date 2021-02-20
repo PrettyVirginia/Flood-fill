@@ -99,4 +99,6 @@ lietraj1 = lie.SplitTraj2(Rlist, traj1)
 # M = eye(4)
 
 # for t in linspace(0, lietraj1.duration, 1000): 
-#     M[:3
+#     M[:3,:3] = lietraj1.EvalRotation(t)
+#     robot.SetTransform(M)
+#  
