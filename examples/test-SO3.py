@@ -93,4 +93,9 @@ t_topp_end = time.time()
 
 print "\033[1;32mRunning time:",t_topp_end-t_topp_start, "sec.\033[0m"
 print "\033[93mDone", "\033[0m"
-lietraj1 = lie.SplitTraj2(Rlist,
+lietraj1 = lie.SplitTraj2(Rlist, traj1)
+
+#---Visualize----
+# M = eye(4)
+
+# for t 
