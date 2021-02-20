@@ -98,4 +98,5 @@ lietraj1 = lie.SplitTraj2(Rlist, traj1)
 #---Visualize----
 # M = eye(4)
 
-# for t 
+# for t in linspace(0, lietraj1.duration, 1000): 
+#     M[:3
