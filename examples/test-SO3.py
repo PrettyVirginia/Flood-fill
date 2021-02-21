@@ -101,4 +101,4 @@ lietraj1 = lie.SplitTraj2(Rlist, traj1)
 # for t in linspace(0, lietraj1.duration, 1000): 
 #     M[:3,:3] = lietraj1.EvalRotation(t)
 #     robot.SetTransform(M)
-#  
+#     isincollision = (env.CheckCollision(robot, Collis
