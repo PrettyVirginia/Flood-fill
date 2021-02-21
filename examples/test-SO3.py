@@ -103,4 +103,4 @@ lietraj1 = lie.SplitTraj2(Rlist, traj1)
 #     robot.SetTransform(M)
 #     isincollision = (env.CheckCollision(robot, CollisionReport()))
 #     if (isincollision):
-#    
+#         print "in collision", " ", t, "/" , lietraj1.
