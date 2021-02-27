@@ -106,4 +106,6 @@ lietraj1 = lie.SplitTraj2(Rlist, traj1)
 #         print "in collision", " ", t, "/" , lietraj1.duration
 #     time.sleep(0.01)
 
-################################
+################################ SHORTCUTTING ############################
+
+print "\03
