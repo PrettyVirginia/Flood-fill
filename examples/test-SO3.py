@@ -108,4 +108,7 @@ lietraj1 = lie.SplitTraj2(Rlist, traj1)
 
 ################################ SHORTCUTTING ############################
 
-print "\03
+print "\033[93mRunning SHORTCUTTING", "\033[0m"
+
+taumax = ones(3)
+v
