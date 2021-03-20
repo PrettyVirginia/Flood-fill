@@ -119,4 +119,5 @@ print "\033[93mDone", "\033[0m"
 print "\033[1;94mFinal trajectory duration: ", lietraj2.duration, " sec.\033[0m"
 
 #---Visualize----
-M = eye
+M = eye(4)
+for t in linspace(0, lietraj2.duration, 1000
