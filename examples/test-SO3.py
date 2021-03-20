@@ -120,4 +120,5 @@ print "\033[1;94mFinal trajectory duration: ", lietraj2.duration, " sec.\033[0m"
 
 #---Visualize----
 M = eye(4)
-for t in linspace(0, lietraj2.duration, 1000
+for t in linspace(0, lietraj2.duration, 1000): 
+    M[:3,:3] = lietraj2.EvalRotation(t)
