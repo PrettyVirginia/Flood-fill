@@ -116,4 +116,7 @@ lietraj2 = Utils.Shortcut(robot, taumax, vmax, lietraj1, 200, -1, 0, -1, inertia
 
 print "\033[93mDone", "\033[0m"
 
-print "\033[1;94mFinal trajectory duration: ", lietraj2.duration, "
+print "\033[1;94mFinal trajectory duration: ", lietraj2.duration, " sec.\033[0m"
+
+#---Visualize----
+M = eye
