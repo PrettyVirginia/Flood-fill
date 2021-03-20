@@ -114,4 +114,6 @@ taumax = ones(3)
 vmax = ones(3)
 lietraj2 = Utils.Shortcut(robot, taumax, vmax, lietraj1, 200, -1, 0, -1, inertia)
 
-prin
+print "\033[93mDone", "\033[0m"
+
+print "\033[1;94m
