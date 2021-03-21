@@ -128,4 +128,6 @@ for t in linspace(0, lietraj2.duration, 1000):
         print "in collision", " ", t, "/" , lietraj2.duration
     time.sleep(0.01)
 
-# lietraj2.P
+# lietraj2.Plot(0.01,0,vmax,taumax,taumax,inertia)
+
+###############
