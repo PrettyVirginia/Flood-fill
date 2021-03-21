@@ -123,4 +123,5 @@ M = eye(4)
 for t in linspace(0, lietraj2.duration, 1000): 
     M[:3,:3] = lietraj2.EvalRotation(t)
     robot.SetTransform(M)
-    isincollision = (env.CheckC
+    isincollision = (env.CheckCollision(robot, CollisionReport()))
+    if (isincollisio
