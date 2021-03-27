@@ -130,4 +130,5 @@ for t in linspace(0, lietraj2.duration, 1000):
 
 # lietraj2.Plot(0.01,0,vmax,taumax,taumax,inertia)
 
-################# SAVE LIETRAJ ########################################
+################# SAVE LIETRAJ #########################################
+#Utils.SaveLietrajAsTextFiles(lietraj1, "Rlist1.txt", "trajlist1.tx
