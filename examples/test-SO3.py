@@ -132,4 +132,7 @@ for t in linspace(0, lietraj2.duration, 1000):
 
 ################# SAVE LIETRAJ #########################################
 #Utils.SaveLietrajAsTextFiles(lietraj1, "Rlist1.txt", "trajlist1.txt")
-#Utils.SaveLietrajAsTextFiles(lietraj2, "Rlis
+#Utils.SaveLietrajAsTextFiles(lietraj2, "Rlist2.txt", "trajlist2.txt")
+
+
+#-------------------- Plotti
