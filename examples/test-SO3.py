@@ -135,4 +135,5 @@ for t in linspace(0, lietraj2.duration, 1000):
 #Utils.SaveLietrajAsTextFiles(lietraj2, "Rlist2.txt", "trajlist2.txt")
 
 
-#-------------------- Plotti
+#-------------------- Plotting the MVC and the profiles --------------------#
+# x.Writ
