@@ -136,4 +136,6 @@ for t in linspace(0, lietraj2.duration, 1000):
 
 
 #-------------------- Plotting the MVC and the profiles --------------------#
-# x.Writ
+# x.WriteProfilesList()
+# x.WriteSwitchPointsList()
+#
