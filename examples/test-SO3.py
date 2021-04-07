@@ -138,4 +138,4 @@ for t in linspace(0, lietraj2.duration, 1000):
 #-------------------- Plotting the MVC and the profiles --------------------#
 # x.WriteProfilesList()
 # x.WriteSwitchPointsList()
-#
+# profileslist = TOPPpy.ProfilesFromString(x.resprofileslist
