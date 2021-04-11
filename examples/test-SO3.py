@@ -140,4 +140,7 @@ for t in linspace(0, lietraj2.duration, 1000):
 # x.WriteSwitchPointsList()
 # profileslist = TOPPpy.ProfilesFromString(x.resprofilesliststring)
 # switchpointslist = TOPPpy.SwitchPointsFromString(x.switchpointsliststring)
-# TOPPpy.PlotProfiles(profileslist, 
+# TOPPpy.PlotProfiles(profileslist, switchpointslist, 4)
+
+
+##########################LOA
