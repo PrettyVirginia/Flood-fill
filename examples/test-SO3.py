@@ -144,4 +144,4 @@ for t in linspace(0, lietraj2.duration, 1000):
 
 
 ##########################LOAD LIETRAJ #################################
-# lietraj4 
+# lietraj4 = Utils.ReadLieTrajFiles("Rlist2.txt", "trajlist2.tx
