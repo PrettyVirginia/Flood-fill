@@ -143,4 +143,5 @@ for t in linspace(0, lietraj2.duration, 1000):
 # TOPPpy.PlotProfiles(profileslist, switchpointslist, 4)
 
 
-##########################LOA
+##########################LOAD LIETRAJ #################################
+# lietraj4 
