@@ -145,4 +145,5 @@ for t in linspace(0, lietraj2.duration, 1000):
 
 ##########################LOAD LIETRAJ #################################
 # lietraj4 = Utils.ReadLieTrajFiles("Rlist2.txt", "trajlist2.txt")
-# for t in linspace(0, lietraj4.durat
+# for t in linspace(0, lietraj4.duration, 1000): 
+#     M[:3,:3] = lietraj4.EvalRo
