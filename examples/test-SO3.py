@@ -148,4 +148,4 @@ for t in linspace(0, lietraj2.duration, 1000):
 # for t in linspace(0, lietraj4.duration, 1000): 
 #     M[:3,:3] = lietraj4.EvalRotation(t)
 #     robot.SetTransform(M)
-#     isi
+#     isincollision = (env.CheckCollision(robot, Collis
