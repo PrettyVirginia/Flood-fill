@@ -59,3 +59,45 @@ class Vertex():
          trajstring -- a trajectory from its parent (or child)
          level      -- its level from the root of the tree (0 for the root)
     """
+    def __init__(self, config, vertextype = FW):
+        self.config = config
+        self.vertextype = vertextype
+        self.parent = None # to be assigned when added to a tree
+        self.traj = '' # to be assigned when added to a tree (rot)
+        self.trajtran = '' # to be assigned when added to a tree (trans)
+        self.level = 0
+
+
+class Tree():
+    """Attributes:
+         verticeslist -- stores all vertices added to the tree
+         treetype     -- FW or BW    
+    """
+    def __init__(self, treetype = FW, vroot = None):
+        if (vroot == None):
+            self.verticeslist = []
+        else:
+            self.verticeslist = [vroot]
+        self.treetype = treetype
+
+    def __len__(self):
+        return len(self.verticeslist)
+
+    def __getitem__(self, index):
+        return self.verticeslist[index]        
+                    
+    def AddVertex(self, parent, traj, trajtran, vnew):
+        vnew.parent = parent
+        vnew.traj = traj
+        vnew.trajtran = trajtran
+        self.verticeslist.append(vnew)
+
+    def GenTrajList(self):
+        trajlist = []
+        if (self.treetype == FW):
+            vertex = self.verticeslist[-1]
+            parent = vertex.parent
+            while (vertex.parent != None):
+                trajlist.append(vertex.traj)
+                vertex = parent
+                if (vertex.parent != None):
