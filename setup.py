@@ -1,3 +1,4 @@
 from distutils.core import setup
 
-s
+setup(name='toppso3',
+      packages=['toppso3'])
