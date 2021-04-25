@@ -46,3 +46,50 @@ class Heap():
     def DecreaseKey():
         pass
 
+
+    def Heapify(self, i):
+        lc = self.LeftChild(i)
+        rc = self.RightChild(i)
+        smallest = i
+        if lc < self.size:
+            if self.data[self.indices[lc]] < self.data[self.indices[smallest]]:
+                smallest = lc
+        if rc < self.size:
+            if self.data[self.indices[rc]] < self.data[self.indices[smallest]]:
+                smallest = rc
+        if smallest != i:
+            self.Swap(i, smallest)            
+            self.Heapify(smallest)
+    
+
+    def Parent(self, i):
+        return int(i - 1)/2
+
+
+    def LeftChild(self, i):
+        return int(2*i) + 1
+    
+
+    def RightChild(self, i):
+        return int(2*i) + 2
+        
+
+    def Swap(self, i, j):
+        temp = self.indices[i]
+        self.indices[i] = self.indices[j]
+        self.indices[j] = temp
+
+
+    def PrintHeap(self):
+        size = self.size
+        for i in range(self.nlevels):
+            space = 10*int(2**(self.nlevels - i - 1)) - 1
+            string = " "*space
+            for j in range(int(2**i)):
+                if(size > 0):
+                    string += ''.join(str(self.data[self.indices[int(2**i - 1 + j)]]) + " "*(2*space))
+                    size -= 1
+                else:
+                    break
+            print string
+            print "\n"
