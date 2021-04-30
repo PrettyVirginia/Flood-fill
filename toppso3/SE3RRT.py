@@ -101,3 +101,56 @@ class Tree():
                 trajlist.append(vertex.traj)
                 vertex = parent
                 if (vertex.parent != None):
+                    parent = vertex.parent
+            trajlist = trajlist[::-1]
+        else:
+            vertex = self.verticeslist[-1]
+            while (vertex.parent != None):
+                trajlist.append(vertex.traj)
+                if (vertex.parent != None):
+                    vertex = vertex.parent
+        return trajlist
+    
+    def GenRotationMatList(self):
+        RotationMatList = []
+        if (self.treetype == FW):
+            vertex = self.verticeslist[-1]
+            RotationMatList.append(rotationMatrixFromQuat(vertex.config.q))
+            parent = vertex.parent
+            while (vertex.parent != None):
+                RotationMatList.append(rotationMatrixFromQuat(parent.config.q))
+                vertex = parent
+                if (vertex.parent != None):
+                    parent = vertex.parent
+            RotationMatList =  RotationMatList[::-1]
+        else:
+            vertex = self.verticeslist[-1]
+            RotationMatList.append(rotationMatrixFromQuat(vertex.config.q))                       
+            while (vertex.parent != None):
+                RotationMatList.append(rotationMatrixFromQuat(vertex.parent.config.q))
+                if (vertex.parent != None):
+                    vertex = vertex.parent
+        return RotationMatList
+
+    def GenTrajTranString(self):
+        trajtranlist = []
+        if (self.treetype == FW):
+            vertex = self.verticeslist[-1]
+            parent = vertex.parent
+            while (vertex.parent != None):
+                trajtranlist.append(vertex.trajtran)
+                vertex = parent
+                if (vertex.parent != None):
+                    parent = vertex.parent
+            trajtranlist = trajtranlist[::-1]
+        else:
+            vertex = self.verticeslist[-1]
+            while (vertex.parent != None):
+                trajtranlist.append(vertex.trajtran)
+                if (vertex.parent != None):
+                    vertex = vertex.parent
+        trajectorytranstring = ''
+        for i in range(len(trajtranlist)):
+            trajectorytranstring += "\n"
+            trajectorytranstring += trajtranlist[i]
+        trajectorytranstring = string.lstrip(trajectorytranstring) # remove leading "\n"
