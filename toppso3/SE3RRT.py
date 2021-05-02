@@ -154,3 +154,54 @@ class Tree():
             trajectorytranstring += "\n"
             trajectorytranstring += trajtranlist[i]
         trajectorytranstring = string.lstrip(trajectorytranstring) # remove leading "\n"
+        return trajectorytranstring
+
+    
+class RRTPlanner():
+    """Base class for RRT planners"""
+    REACHED = 0
+    ADVANCED = 1
+    TRAPPED = 2
+
+    def __init__(self, vertex_start, vertex_goal, robot):
+        """Initialize a planner. RRTPlanner always has two trees. For a unidirectional planner, 
+        the treeend will not be extended and always has only one vertex, vertex_goal.        
+        """        
+        # np.random.seed(np.random.randint(0, 10))
+        ## need more unpredictable sequence than that generated from np.random
+        self.RANDOM_NUMBER_GENERATOR = random.SystemRandom()
+        
+        self.treestart = Tree(FW, vertex_start)
+        self.treeend = Tree(BW, vertex_goal)
+        self.connectingtraj = []
+        self.connectingtrajtran = []
+        self.runningtime = 0.0
+        self.nn = -1
+        self.iterations = 0
+        self.result = False
+        
+        # DEFAULT PARAMETERS  
+        self.STEPSIZE = 0.7
+        self.INTERPOLATIONDURATION = 0.5
+        
+        #Openrave paras
+        self.robot = robot
+        
+        self.discrtimestep = 1e-2 ## for collision checking, etc.
+
+    def __str__(self):
+        ret = "Total running time :" + str(self.runningtime) + "sec.\n"
+        ret += "Total number of iterations :" + str(self.iterations)
+        return ret
+
+    def RandomConfig(self):
+        """RandomConfig samples a random configuration uniformly from the quaternion unit sphere in four dimensions."""
+        
+        q_rand = lie.RandomQuat()
+        vellowerlimit = -5 ##
+        velupperlimit = 5  ##
+        # qs_rand = np.zeros(3)
+        qs_rand = np.array([1e-1,1e-1,1e-1])
+        # for i in range(3):
+        #    qs_rand[i] = self.RANDOM_NUMBER_GENERATOR.uniform(vellowerlimit,velupperlimit) 
+        
