@@ -205,3 +205,59 @@ class RRTPlanner():
         # for i in range(3):
         #    qs_rand[i] = self.RANDOM_NUMBER_GENERATOR.uniform(vellowerlimit,velupperlimit) 
         
+        qt_rand = 0.05*np.random.rand(3) 
+        qts_rand = np.zeros(3)
+
+        return Config(q_rand,qt_rand, qs_rand, qts_rand)
+
+    def Extend(self, c_rand):
+        if (np.mod(self.iterations - 1, 2) == FW):
+            ## treestart is to be extended
+            res = self.ExtendFW(c_rand)
+        else:
+            ## treeend is to be extended
+            res = self.ExtendBW(c_rand)
+        return res
+
+    def ExtendFW(self, c_rand):
+        nnindices = self.NearestNeighborIndices(c_rand, FW)
+        for index in nnindices:
+            v_near = self.treestart.verticeslist[index]
+            q_beg = v_near.config.q
+            qs_beg = v_near.config.qs
+            
+            qt_beg = v_near.config.qt
+            qts_beg = v_near.config.qts
+
+            ## check if c_rand is too far from vnear
+            ## if the new ramdonly-chose node is close, it's safer . Or in another words, the interpolated path will have more chances that it won't collide with the obstacles
+            delta = self.Distance(v_near.config, c_rand)
+            if (delta <= self.STEPSIZE):
+                q_end = c_rand.q
+                STATUS = REACHED
+            else:
+                q_end = q_beg + self.STEPSIZE*(c_rand.q - q_beg)/np.sqrt(delta)
+                q_end /= np.linalg.norm(q_end)
+                STATUS = ADVANCED
+            qs_end = c_rand.qs
+
+            qt_end = c_rand.qt
+            qts_end = c_rand.qts
+            c_new = Config(q_end, qt_end, qs_end, qts_end)
+
+            ## check feasibility of c_new
+            if (not self.IsFeasibleConfig(c_new)):
+                # print "status : TRAPPED (infeasible configuration)"
+                STATUS = TRAPPED
+                continue            
+            
+            ## interpolate a trajectory
+            #trajectory = lie.InterpolateSO3ZeroOmega(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),self.INTERPOLATIONDURATION)
+            trajectory = lie.InterpolateSO3(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),qs_beg,qs_end,self.INTERPOLATIONDURATION)
+            trajectorytranstring = Utils.TrajString3rdDegree(qt_beg, qt_end, qts_beg, qts_end, self.INTERPOLATIONDURATION)
+            ## check feasibility ( collision checking for the trajectory)
+            result = self.IsFeasibleTrajectory(trajectory, trajectorytranstring, q_beg, qt_beg, FW) 
+            if (result[0] == OK):
+                  ## extension is now successful
+                v_new = Vertex(c_new, FW)
+                v_new.level = v_near.level + 1
