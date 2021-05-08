@@ -306,3 +306,48 @@ class RRTPlanner():
             trajectorytranstring = Utils.TrajString3rdDegree(qt_beg, qt_end, qts_beg, qts_end, self.INTERPOLATIONDURATION)
             ## check feasibility ( collision checking for the trajectory)
             result = self.IsFeasibleTrajectory(trajectory, trajectorytranstring, q_beg, qt_beg, BW)
+            if (result[0] == OK):
+                ## extension is now successful
+                v_new = Vertex(c_new, BW)
+                v_new.level = v_near.level + 1
+                self.treeend.AddVertex(v_near, trajectory,trajectorytranstring, v_new)
+                return STATUS
+            else:
+                STATUS = TRAPPED  #trajecory doesnt satify the collision-free constraint
+        return STATUS
+
+
+    def Connect(self):
+        if (np.mod(self.iterations - 1, 2) == FW):
+            ## treestart has just been extended
+            res = self.ConnectBW()
+        else:
+            ## treeend has just been extended
+            res = self.ConnectFW()
+        return res
+        
+    def ConnectFW(self):
+        v_test = self.treeend.verticeslist[-1]
+        nnindices = self.NearestNeighborIndices(v_test.config, FW)
+        for index in nnindices:
+            v_near = self.treestart.verticeslist[index]
+            
+            q_beg = v_near.config.q
+            qs_beg = v_near.config.qs
+            qt_beg = v_near.config.qt
+            qts_beg = v_near.config.qts
+
+
+            q_end = v_test.config.q
+            qs_end = v_test.config.qs
+            qt_end = v_test.config.qt
+            qts_end = v_test.config.qts
+             ## interpolate a trajectory
+            #trajectory = lie.InterpolateSO3ZeroOmega(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),self.INTERPOLATIONDURATION)
+            trajectory = lie.InterpolateSO3(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),qs_beg,qs_end,self.INTERPOLATIONDURATION)
+            trajectorytranstring = Utils.TrajString3rdDegree(qt_beg, qt_end, qts_beg, qts_end, self.INTERPOLATIONDURATION)
+            
+             ## check feasibility ( collision checking for the trajectory)
+            result = self.IsFeasibleTrajectory(trajectory, trajectorytranstring, q_beg, qt_beg, FW)
+            if (result[0] == 1):
+                 ## conection is now successful
