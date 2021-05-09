@@ -351,3 +351,55 @@ class RRTPlanner():
             result = self.IsFeasibleTrajectory(trajectory, trajectorytranstring, q_beg, qt_beg, FW)
             if (result[0] == 1):
                  ## conection is now successful
+                self.treestart.verticeslist.append(v_near)
+                self.connectingtraj = trajectory
+                self.connectingtrajtran = trajectorytranstring
+                return REACHED
+        return TRAPPED
+
+    def ConnectBW(self):
+        v_test = self.treestart.verticeslist[-1]
+        nnindices = self.NearestNeighborIndices(v_test.config, BW)
+        for index in nnindices:
+            v_near = self.treeend.verticeslist[index]
+            
+            q_end = v_near.config.q
+            qs_end = v_near.config.qs
+            qt_end = v_near.config.qt
+            qts_end = v_near.config.qts
+
+            q_beg = v_test.config.q
+            qs_beg = v_test.config.qs
+            qt_beg = v_test.config.qt
+            qts_beg = v_test.config.qts
+
+            ## interpolate a trajectory
+            #trajectory = lie.InterpolateSO3ZeroOmega(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),self.INTERPOLATIONDURATION)
+            trajectory = lie.InterpolateSO3(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),qs_beg,qs_end,self.INTERPOLATIONDURATION)
+            trajectorytranstring = Utils.TrajString3rdDegree(qt_beg, qt_end, qts_beg, qts_end, self.INTERPOLATIONDURATION)
+             ## check feasibility ( collision checking for the trajectory)
+            result = self.IsFeasibleTrajectory(trajectory,trajectorytranstring, q_beg, qt_beg, BW)
+            if (result[0] == 1):
+                 ## conection is now successful
+                self.treeend.verticeslist.append(v_near)
+                self.connectingtraj = trajectory
+                self.connectingtrajtran = trajectorytranstring
+                return REACHED
+        return TRAPPED
+
+    def IsFeasibleConfig(self, c_rand):
+        """IsFeasibleConfig checks feasibility of the given Config object. 
+        Feasibility conditions are to be determined by each RRT planner.
+        """
+        env = self.robot.GetEnv()
+        with self.robot:
+            transformation = eye(4)
+            transformation[0:3,0:3] = rotationMatrixFromQuat(c_rand.q)
+            transformation[0:3,3] = c_rand.qt
+            self.robot.SetTransform(transformation)
+            isincollision = (env.CheckCollision(self.robot, CollisionReport()))
+            if (isincollision):
+                # print "\t in-collision"
+                return False
+            else:
+                return True
