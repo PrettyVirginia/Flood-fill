@@ -452,3 +452,50 @@ class RRTPlanner():
             # print "\033[1;34miteration:", self.iterations, "\033[0m"
             t_begin = time.time()
             
+            c_rand = self.RandomConfig()
+            if (self.Extend(c_rand) != TRAPPED):
+                print "\033[1;32mTree start : ", len(self.treestart.verticeslist), 
+                print "; Tree end : ", len(self.treeend.verticeslist), "\033[0m"
+                if (self.Connect() == REACHED):
+                    print "\033[1;32mPath found"
+                    print "    Total number of iterations:", self.iterations
+                    t_end = time.time()
+                    t += t_end - t_begin
+                    self.runningtime += t
+                    print "    Total running time:", self.runningtime, "sec.", "\033[0m"
+                    self.result = True
+                    return True
+            t_end = time.time()
+            t += t_end - t_begin
+            self.runningtime += t_end - t_begin
+        print "\033[1;31mAllotted time (", allottedtime, " sec.) is exhausted after", self.iterations - prev_it, "iterations.", "\033[0m"
+        return False
+
+
+    def Distance(self, c_test0, c_test1):
+        """Distance measures distance between 2 configs, ctest0 and ctest1
+        """
+        X0 = eye(4)
+        X1 = eye(4)
+        X0[:3,:3] = rotationMatrixFromQuat(c_test0.q)
+        X0[:3,3] = c_test0.qt
+        X1[:3,:3] = rotationMatrixFromQuat(c_test1.q)
+        X1[:3,3] = c_test1.qt
+        return Utils.SE3Distance(X0, X1,1/pi, 1)
+
+        
+    def NearestNeighborIndices(self, c_rand, treetype, custom_nn = 0):
+        """NearestNeighborIndices returns indices of self.nn nearest neighbors of c_rand 
+        on the tree specified by treetype.
+        """
+        if (treetype == FW):
+            tree = self.treestart
+            nv = len(tree)
+        else:
+            tree = self.treeend
+            nv = len(tree)
+            
+        distancelist = [self.Distance(c_rand, v.config) for v in tree.verticeslist]
+        distanceheap = Heap.Heap(distancelist)
+        
+        if (custom_nn == 0):
