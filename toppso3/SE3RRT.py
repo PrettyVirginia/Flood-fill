@@ -499,3 +499,59 @@ class RRTPlanner():
         distanceheap = Heap.Heap(distancelist)
         
         if (custom_nn == 0):
+            nn = self.nn
+        else:
+            nn = custom_nn
+        
+        if (nn == -1): #using all of the vertexes in the tree
+            nn = nv
+        else:
+            nn = min(self.nn, nv)
+        nnindices = [distanceheap.ExtractMin()[0] for i in range(nn)]
+        return nnindices
+
+
+    def GenFinalTrajList(self):
+        if (not self.result):
+            print "The Planner did not find any path from start to goal."
+            return []
+        TrajectoryList = []
+        TrajectoryList = self.treestart.GenTrajList()
+        if (self.connectingtraj != []):
+            TrajectoryList.append(self.connectingtraj)
+        if (self.treeend.GenTrajList()!= []):
+            TrajectoryList.extend(self.treeend.GenTrajList())
+        #print len(TrajectoryList)
+        return TrajectoryList
+
+    
+    def GenFinalRotationMatrixList(self):
+        if (not self.result):
+            print "The Planner did not find any path from start to goal."
+            return []
+        
+        RotationMatrixList = []
+        RotationMatrixList = self.treestart.GenRotationMatList()
+        if (self.treeend.GenRotationMatList() != []):
+            RotationMatrixList.extend(self.treeend.GenRotationMatList())
+        RotationMatrixList.pop()
+        #print len(RotationMatrixList)
+        return RotationMatrixList
+
+    def GenFinalTrajTranString(self):
+        if (not self.result):
+            print "The Planner did not find any path from start to goal."
+            return ''
+        
+        trajectorytranstring = ''
+        trajectorytranstring += self.treestart.GenTrajTranString()
+        if not (self.connectingtrajtran == ''):
+            if not (trajectorytranstring == ''):
+                trajectorytranstring += "\n"
+            trajectorytranstring += self.connectingtrajtran
+        trajtranstring_treeend = self.treeend.GenTrajTranString()
+        if (not trajtranstring_treeend == ''):
+            trajectorytranstring += "\n"
+            trajectorytranstring += trajtranstring_treeend
+        
+        return trajectorytranstring
