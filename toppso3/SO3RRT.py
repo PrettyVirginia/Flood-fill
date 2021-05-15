@@ -57,3 +57,42 @@ class Vertex():
          trajstring -- a trajectory from its parent (or child)
          # sdmin      -- minimum reachable sd
          # sdmax      -- maximum reachable sd
+         level      -- its level from the root of the tree (0 for the root)
+         # drawn      -- True if this vertex has been plotted via Vertex::Plot
+    """
+    def __init__(self, config, vertextype = FW):
+        self.config = config
+        self.vertextype = vertextype
+        self.parent = None # to be assigned when added to a tree
+        self.traj = '' # to be assigned when added to a tree
+        self.level = 0
+        # self.drawn = False 
+
+
+class Tree():
+    """Attributes:
+         verticeslist -- stores all vertices added to the tree
+         treetype     -- FW or BW    
+    """
+    def __init__(self, treetype = FW, vroot = None):
+        if (vroot == None):
+            self.verticeslist = []
+        else:
+            self.verticeslist = [vroot]
+        self.treetype = treetype
+
+    def __len__(self):
+        return len(self.verticeslist)
+
+    def __getitem__(self, index):
+        return self.verticeslist[index]        
+                    
+    def AddVertex(self, parent, traj, vnew):
+        vnew.parent = parent
+        vnew.traj = traj
+        self.verticeslist.append(vnew)
+
+    def GenTrajList(self):
+        trajlist = []
+        if (self.treetype == FW):
+            vertex = self.verticeslist[-1]
