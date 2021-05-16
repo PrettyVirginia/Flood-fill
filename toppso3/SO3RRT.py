@@ -195,3 +195,64 @@ class RRTPlanner():
             v_near = self.treestart.verticeslist[index]
             q_beg = v_near.config.q
             qs_beg = v_near.config.qs
+            
+            ## check if c_rand is too far from vnear
+            ## if the new ramdonly-chose node is close, it's safer . Or in another words, the interpolated path will have more chances that it won't collide with the obstacles
+            delta = self.Distance(v_near.config, c_rand)
+            if (delta <= self.STEPSIZE):
+                q_end = c_rand.q
+                STATUS = REACHED
+            else:
+                q_end = q_beg + self.STEPSIZE*(c_rand.q - q_beg)/np.sqrt(delta)
+                q_end /= np.linalg.norm(q_end)
+                STATUS = ADVANCED
+            qs_end = c_rand.qs
+            c_new = Config(q_end, qs_end)
+
+            ## check feasibility of c_new
+            if (not self.IsFeasibleConfig(c_new)):
+                # print "status : TRAPPED (infeasible configuration)"
+                STATUS = TRAPPED
+                continue                        
+            ## interpolate a trajectory
+            #trajectory = lie.InterpolateSO3ZeroOmega(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),self.INTERPOLATIONDURATION)
+            trajectory = lie.InterpolateSO3(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),qs_beg,qs_end,self.INTERPOLATIONDURATION)
+            ## check feasibility ( collision checking for the trajectory)
+            result = self.IsFeasibleTrajectory(trajectory, q_beg, FW)
+            if (result[0] == OK):
+                  ## extension is now successful
+                v_new = Vertex(c_new, FW)
+                # v_new.sdmin = result[1]
+                # v_new.sdmax = result[2]
+                v_new.level = v_near.level + 1
+                self.treestart.AddVertex(v_near, trajectory, v_new)
+                return STATUS
+            else:
+                STATUS = TRAPPED  #trajecory doesnt satify the collision-free constraint
+        return STATUS
+
+    def ExtendBW(self, c_rand):
+        # Implement NearestneiborIndices return the list of nodes in order of increasing distance
+        nnindices = self.NearestNeighborIndices(c_rand, BW)
+        for index in nnindices:
+            v_near = self.treeend.verticeslist[index]
+            q_end = v_near.config.q
+            qs_end = v_near.config.qs
+
+            ## check if c_rand is too far from vnear
+            ## if the new ramdonly-chose node is close, it's safer . Or in another words, the interpolated path will have more chances that it won't collide with the obstacles
+            delta = self.Distance(v_near.config, c_rand)
+            if (delta <= self.STEPSIZE):
+                q_beg = c_rand.q
+                STATUS = REACHED
+            else:
+                q_beg = q_end + self.STEPSIZE*(c_rand.q - q_end)/np.sqrt(delta)
+                q_beg /= np.linalg.norm(q_beg)
+                STATUS = ADVANCED
+            qs_beg = c_rand.qs
+            c_new = Config(q_beg, qs_beg)
+            
+            ## check feasibility of c_new
+            if (not self.IsFeasibleConfig(c_new)):
+                # print "status : TRAPPED (infeasible configuration)"
+                STATUS = TRAPPED
