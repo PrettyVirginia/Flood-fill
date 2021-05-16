@@ -96,3 +96,49 @@ class Tree():
         trajlist = []
         if (self.treetype == FW):
             vertex = self.verticeslist[-1]
+            parent = vertex.parent
+            while (vertex.parent != None):
+                trajlist.append(vertex.traj)
+                vertex = parent
+                if (vertex.parent != None):
+                    parent = vertex.parent
+            trajlist = trajlist[::-1]
+        else:
+            vertex = self.verticeslist[-1]
+            while (vertex.parent != None):
+                trajlist.append(vertex.traj)
+                if (vertex.parent != None):
+                    vertex = vertex.parent
+        return trajlist
+    
+    def GenRotationMatList(self):
+        RotationMatList = []
+        if (self.treetype == FW):
+            vertex = self.verticeslist[-1]
+            RotationMatList.append(rotationMatrixFromQuat(vertex.config.q))
+            parent = vertex.parent
+            while (vertex.parent != None):
+                RotationMatList.append(rotationMatrixFromQuat(parent.config.q))
+                vertex = parent
+                if (vertex.parent != None):
+                    parent = vertex.parent
+            RotationMatList =  RotationMatList[::-1]
+        else:
+            vertex = self.verticeslist[-1]
+            RotationMatList.append(rotationMatrixFromQuat(vertex.config.q))                       
+            while (vertex.parent != None):
+                RotationMatList.append(rotationMatrixFromQuat(vertex.parent.config.q))
+                if (vertex.parent != None):
+                    vertex = vertex.parent
+        return RotationMatList
+
+
+class RRTPlanner():
+    """Base class for RRT planners"""
+    REACHED = 0
+    ADVANCED = 1
+    TRAPPED = 2
+
+    def __init__(self, vertex_start, vertex_goal, robot):
+        """Initialize a planner. RRTPlanner always has two trees. For a unidirectional planner, 
+        the treeend will not be extended and always has only one vertex, vertex_goal.        
