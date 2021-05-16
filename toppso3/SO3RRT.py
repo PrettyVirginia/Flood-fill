@@ -142,3 +142,56 @@ class RRTPlanner():
     def __init__(self, vertex_start, vertex_goal, robot):
         """Initialize a planner. RRTPlanner always has two trees. For a unidirectional planner, 
         the treeend will not be extended and always has only one vertex, vertex_goal.        
+        """        
+        # np.random.seed(np.random.randint(0, 10))
+        ## need more unpredictable sequence than that generated from np.random
+        self.RANDOM_NUMBER_GENERATOR = random.SystemRandom()
+        
+        self.treestart = Tree(FW, vertex_start)
+        self.treeend = Tree(BW, vertex_goal)
+        self.connectingtraj = []
+        self.runningtime = 0.0
+        self.nn = -1
+        self.iterations = 0
+        self.result = False
+        
+        # DEFAULT PARAMETERS
+        self.STEPSIZE = 0.8
+        self.INTERPOLATIONDURATION = 0.5
+        # self.PLOT = False
+        
+        #Openrave paras
+        self.robot = robot
+        
+        self.discrtimestep = 1e-2 ## for collision checking, etc.
+
+    def __str__(self):
+        ret = "Total running time :" + str(self.runningtime) + "sec.\n"
+        ret += "Total number of iterations :" + str(self.iterations)
+        return ret
+
+    def RandomConfig(self):
+        """RandomConfig samples a random configuration uniformly from the quaternion unit sphere in four dimensions."""
+        q_rand = lie.RandomQuat()
+        vellowerlimit = -5 ##
+        velupperlimit = 5  ##
+        qs_rand = np.array([1e-1,1e-1,1e-1 ])
+        # for i in range(3):
+        #     qs_rand[i] = self.RANDOM_NUMBER_GENERATOR.uniform(vellowerlimit,velupperlimit) 
+        return Config(q_rand,qs_rand)
+
+    def Extend(self, c_rand):
+        if (np.mod(self.iterations - 1, 2) == FW):
+            ## treestart is to be extended
+            res = self.ExtendFW(c_rand)
+        else:
+            ## treeend is to be extended
+            res = self.ExtendBW(c_rand)
+        return res
+
+    def ExtendFW(self, c_rand):
+        nnindices = self.NearestNeighborIndices(c_rand, FW)
+        for index in nnindices:
+            v_near = self.treestart.verticeslist[index]
+            q_beg = v_near.config.q
+            qs_beg = v_near.config.qs
