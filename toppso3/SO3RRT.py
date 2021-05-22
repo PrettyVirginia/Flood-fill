@@ -321,3 +321,55 @@ class RRTPlanner():
             q_beg = v_test.config.q
             qs_beg = v_test.config.qs
             
+            ## interpolate a trajectory
+            #trajectory = lie.InterpolateSO3ZeroOmega(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),self.INTERPOLATIONDURATION)
+            trajectory = lie.InterpolateSO3(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),qs_beg,qs_end,self.INTERPOLATIONDURATION)
+             ## check feasibility ( collision checking for the trajectory)
+            result = self.IsFeasibleTrajectory(trajectory, q_beg, BW)
+            if (result[0] == 1):
+                 ## conection is now successful
+                self.treeend.verticeslist.append(v_near)
+                self.connectingtraj = trajectory
+                return REACHED
+        return TRAPPED
+
+    def IsFeasibleConfig(self, c_rand):
+        """IsFeasibleConfig checks feasibility of the given Config object. 
+        Feasibility conditions are to be determined by each RRT planner.
+        """
+        env = self.robot.GetEnv()
+        with self.robot:
+            transformation = eye(4)
+            transformation[0:3,0:3] = rotationMatrixFromQuat(c_rand.q)
+            self.robot.SetTransform(transformation)
+            isincollision = (env.CheckCollision(self.robot, CollisionReport()))
+            if (isincollision):
+                # print "\t in-collision"
+                return False
+            else:
+                return True
+
+
+    def IsFeasibleTrajectory(self, trajectory, q_beg, direction):
+        """IsFeasibleTrajectory checks feasibility of the given trajectory.
+        Feasibility conditions are to be determined by each RRT planner.
+        """
+        ## check collision
+        env = self.robot.GetEnv()
+        #traj = Trajectory.PiecewisePolynomialTrajectory.FromString(trajectory)
+        traj = trajectory
+        R_beg =  rotationMatrixFromQuat(q_beg)
+        for s in np.arange(0, traj.duration, self.discrtimestep):
+            with self.robot:
+                transformation = eye(4)
+                transformation[0:3,0:3] = lie.EvalRotation(R_beg, traj, s)
+                self.robot.SetTransform(transformation)           
+                isincollision = (env.CheckCollision(self.robot, CollisionReport()))
+                # print  "s =", s, " ", isincollision
+            if (isincollision):
+                return [INCOLLISION]
+
+        with self.robot:
+            self.robot.SetTransform(transformation)
+            isincollision = (env.CheckCollision(self.robot, CollisionReport()))
+        if (isincollision):
