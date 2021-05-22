@@ -256,3 +256,68 @@ class RRTPlanner():
             if (not self.IsFeasibleConfig(c_new)):
                 # print "status : TRAPPED (infeasible configuration)"
                 STATUS = TRAPPED
+                continue            
+
+            ## interpolate a trajectory
+            #trajectory = lie.InterpolateSO3ZeroOmega(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),self.INTERPOLATIONDURATION)
+            trajectory = lie.InterpolateSO3(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),qs_beg,qs_end,self.INTERPOLATIONDURATION)
+            ## check feasibility ( collision checking for the trajectory)
+            result = self.IsFeasibleTrajectory(trajectory, q_beg, BW)
+            if (result[0] == OK):
+                ## extension is now successful
+                v_new = Vertex(c_new, BW)
+                # v_new.sdmin = result[1]
+                # v_new.sdmax = result[2]
+                v_new.level = v_near.level + 1
+                self.treeend.AddVertex(v_near, trajectory, v_new)
+                return STATUS
+            else:
+                STATUS = TRAPPED  #trajecory doesnt satify the collision-free constraint
+        return STATUS
+
+
+    def Connect(self):
+        if (np.mod(self.iterations - 1, 2) == FW):
+            ## treestart has just been extended
+            res = self.ConnectBW()
+        else:
+            ## treeend has just been extended
+            res = self.ConnectFW()
+        return res
+        
+    def ConnectFW(self):
+        v_test = self.treeend.verticeslist[-1]
+        nnindices = self.NearestNeighborIndices(v_test.config, FW)
+        for index in nnindices:
+            v_near = self.treestart.verticeslist[index]
+            
+            q_beg = v_near.config.q
+            qs_beg = v_near.config.qs
+            
+            q_end = v_test.config.q
+            qs_end = v_test.config.qs
+            
+             ## interpolate a trajectory
+            #trajectory = lie.InterpolateSO3ZeroOmega(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),self.INTERPOLATIONDURATION)
+            trajectory = lie.InterpolateSO3(rotationMatrixFromQuat(q_beg),rotationMatrixFromQuat(q_end),qs_beg,qs_end,self.INTERPOLATIONDURATION)
+             ## check feasibility ( collision checking for the trajectory)
+            result = self.IsFeasibleTrajectory(trajectory, q_beg, FW)
+            if (result[0] == 1):
+                 ## conection is now successful
+                self.treestart.verticeslist.append(v_near)
+                self.connectingtraj = trajectory
+                return REACHED
+        return TRAPPED
+
+    def ConnectBW(self):
+        v_test = self.treestart.verticeslist[-1]
+        nnindices = self.NearestNeighborIndices(v_test.config, BW)
+        for index in nnindices:
+            v_near = self.treeend.verticeslist[index]
+            
+            q_end = v_near.config.q
+            qs_end = v_near.config.qs
+             
+            q_beg = v_test.config.q
+            qs_beg = v_test.config.qs
+            
