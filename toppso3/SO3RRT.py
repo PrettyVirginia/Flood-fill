@@ -373,3 +373,51 @@ class RRTPlanner():
             self.robot.SetTransform(transformation)
             isincollision = (env.CheckCollision(self.robot, CollisionReport()))
         if (isincollision):
+            return [INCOLLISION]
+        else:
+            if (direction == FW):
+                return [OK]
+            else:
+                return [OK]
+
+
+    def Run(self, allottedtime):
+        if (self.result):
+            print "The planner has already found a path."
+            return True
+
+        t = 0.0
+        prev_it = self.iterations
+
+        while (t < allottedtime):
+            self.iterations += 1
+            # print "\033[1;34miteration:", self.iterations, "\033[0m"
+            t_begin = time.time()
+            
+            c_rand = self.RandomConfig()
+            if (self.Extend(c_rand) != TRAPPED):
+                print "\033[1;32mTree start : ", len(self.treestart.verticeslist), 
+                print "; Tree end : ", len(self.treeend.verticeslist), "\033[0m"
+                if (self.Connect() == REACHED):
+                    print "\033[1;32mPath found"
+                    print "    Total number of iterations:", self.iterations
+                    t_end = time.time()
+                    t += t_end - t_begin
+                    self.runningtime += t
+                    print "    Total running time:", self.runningtime, "sec.", "\033[0m"
+                    self.result = True
+                    return True
+            t_end = time.time()
+            t += t_end - t_begin
+            self.runningtime += t_end - t_begin
+        print "\033[1;31mAllotted time (", allottedtime, " sec.) is exhausted after", self.iterations - prev_it, "iterations.", "\033[0m"
+        return False
+
+
+    def Distance(self, c_test0, c_test1):
+        """Distance measures distance between 2 configs, ctest0 and ctest1
+        """
+        return Utils.QuatDistance(c_test0.q, c_test1.q)
+
+        
+    def NearestNeighborIndices(self, c_rand, treetype, custom_nn = 0):
