@@ -471,3 +471,5 @@ class RRTPlanner():
         if (self.treeend.GenRotationMatList() != []):
             RotationMatrixList.extend(self.treeend.GenRotationMatList())
         RotationMatrixList.pop()
+        #print len(RotationMatrixList)
+        return RotationMatrixList
