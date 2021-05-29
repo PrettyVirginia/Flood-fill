@@ -421,3 +421,53 @@ class RRTPlanner():
 
         
     def NearestNeighborIndices(self, c_rand, treetype, custom_nn = 0):
+        """NearestNeighborIndices returns indices of self.nn nearest neighbors of c_rand 
+        on the tree specified by treetype.
+        """
+        if (treetype == FW):
+            tree = self.treestart
+            nv = len(tree)
+        else:
+            tree = self.treeend
+            nv = len(tree)
+            
+        distancelist = [self.Distance(c_rand, v.config) for v in tree.verticeslist]
+        distanceheap = Heap.Heap(distancelist)
+        
+        if (custom_nn == 0):
+            nn = self.nn
+        else:
+            nn = custom_nn
+        
+        if (nn == -1): #using all of the vertexes in the tree
+            nn = nv
+        else:
+            nn = min(self.nn, nv)
+        nnindices = [distanceheap.ExtractMin()[0] for i in range(nn)]
+        return nnindices
+
+
+    def GenFinalTrajList(self):
+        if (not self.result):
+            print "The Planner did not find any path from start to goal."
+            return []
+        TrajectoryList = []
+        TrajectoryList = self.treestart.GenTrajList()
+        if (self.connectingtraj != []):
+            TrajectoryList.append(self.connectingtraj)
+        if (self.treeend.GenTrajList()!= []):
+            TrajectoryList.extend(self.treeend.GenTrajList())
+        #print len(TrajectoryList)
+        return TrajectoryList
+
+    
+    def GenFinalRotationMatrixList(self):
+        if (not self.result):
+            print "The Planner did not find any path from start to goal."
+            return []
+        
+        RotationMatrixList = []
+        RotationMatrixList = self.treestart.GenRotationMatList()
+        if (self.treeend.GenRotationMatList() != []):
+            RotationMatrixList.extend(self.treeend.GenRotationMatList())
+        RotationMatrixList.pop()
