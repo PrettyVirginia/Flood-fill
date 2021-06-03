@@ -1,2 +1,9 @@
 from openravepy import *
-from pylab impo
+from pylab import *
+
+from numpy import *
+
+import lie
+import time 
+
+import string
