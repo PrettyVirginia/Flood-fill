@@ -7,3 +7,7 @@ import lie
 import time 
 
 import string
+import StringIO
+
+import TOPP
+from TOPP import TOP
