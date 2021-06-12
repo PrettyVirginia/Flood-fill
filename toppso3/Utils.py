@@ -10,4 +10,7 @@ import string
 import StringIO
 
 import TOPP
-from TOPP import TOP
+from TOPP import TOPPpy
+from TOPP import TOPPbindings
+from TOPP import Trajectory
+fro
