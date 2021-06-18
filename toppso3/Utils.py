@@ -15,4 +15,5 @@ from TOPP import TOPPbindings
 from TOPP import Trajectory
 from TOPP import Utilities
 
-import pdb ##########
+import pdb ########################
+import matplotlib.pyplot as plt
