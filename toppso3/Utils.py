@@ -20,4 +20,5 @@ import matplotlib.pyplot as plt
 
 
 def QuatDistance(quat0, quat1): 
-    rotationweigh
+    rotationweight = 1
+    innerProduct = dot(quat0,q
