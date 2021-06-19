@@ -17,3 +17,7 @@ from TOPP import Utilities
 
 import pdb ########################
 import matplotlib.pyplot as plt
+
+
+def QuatDistance(quat0, quat1): 
+    rotationweigh
