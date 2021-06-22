@@ -26,4 +26,7 @@ def QuatDistance(quat0, quat1):
     return quatDistance
 
 def SO3Distance(R0, R1): # bi-invariance
-    return linalg.norm(lie.logvect
+    return linalg.norm(lie.logvect(dot(R0.T,R1)))
+
+def R3Distance(b0, b1):
+    return linal
