@@ -25,4 +25,5 @@ def QuatDistance(quat0, quat1):
     quatDistance = rotationweight*(1-abs(innerProduct))
     return quatDistance
 
-def SO3Distance(R0, R1): #
+def SO3Distance(R0, R1): # bi-invariance
+    return linalg.norm(lie.logvect
