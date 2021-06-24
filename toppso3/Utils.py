@@ -29,4 +29,6 @@ def SO3Distance(R0, R1): # bi-invariance
     return linalg.norm(lie.logvect(dot(R0.T,R1)))
 
 def R3Distance(b0, b1):
-    return linal
+    return linalg.norm(b1-b0)
+
+def SE3Distance(X0, X1, c = None, d 
