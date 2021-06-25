@@ -34,4 +34,8 @@ def R3Distance(b0, b1):
 def SE3Distance(X0, X1, c = None, d = None): # left invariance
     R0 = X0[:3,:3]
     R1 = X1[:3,:3]
-    b0 
+    b0 = X0[:3,3]
+    b1 = X1[:3,3]
+    if (c == None):
+        c = 1
+    else
