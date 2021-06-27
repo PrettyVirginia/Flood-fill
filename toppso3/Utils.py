@@ -38,4 +38,7 @@ def SE3Distance(X0, X1, c = None, d = None): # left invariance
     b1 = X1[:3,3]
     if (c == None):
         c = 1
-    else
+    else: c = c
+    if (d == None):
+        d = 1
+    els
