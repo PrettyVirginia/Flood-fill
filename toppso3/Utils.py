@@ -41,4 +41,5 @@ def SE3Distance(X0, X1, c = None, d = None): # left invariance
     else: c = c
     if (d == None):
         d = 1
-    els
+    else: d = d
+    return sqrt(c*(SO3Distance(R0,R1
