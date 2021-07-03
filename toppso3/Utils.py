@@ -50,3 +50,6 @@ def TrajString3rdDegree(q_beg, q_end, qs_beg, qs_end, duration):
     ndof = len(q_beg)
     
     trajectorystring += "%f\n%d"%(duration, ndof)
+
+    for k in range(ndof):
+        a, b
