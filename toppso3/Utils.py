@@ -45,4 +45,6 @@ def SE3Distance(X0, X1, c = None, d = None): # left invariance
     return sqrt(c*(SO3Distance(R0,R1)**2) + d*(R3Distance(b0,b1)**2))
     
 ################## interpolate translation ####################################
-def TrajString3rdDegree(q_beg, q_end, qs_beg, qs
+def TrajString3rdDegree(q_beg, q_end, qs_beg, qs_end, duration):
+    trajectorystring = ''
+    ndof = len(
