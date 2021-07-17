@@ -58,4 +58,5 @@ def TrajString3rdDegree(q_beg, q_end, qs_beg, qs_end, duration):
 
 #################### SE3 traj ##################################################
 
-def SE3TrajFromTransandSO3(transtraj, rtraj): # sam
+def SE3TrajFromTransandSO3(transtraj, rtraj): # same chunk.duration
+    #return duration-dimension-trans polynom
