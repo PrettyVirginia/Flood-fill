@@ -66,4 +66,5 @@ def SE3TrajFromTransandSO3(transtraj, rtraj): # same chunk.duration
     clist = []
     for c in transtraj.chunkslist:
         plist = []
-        
+        for i in range(3):
+            plist.append
