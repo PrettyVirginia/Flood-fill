@@ -73,4 +73,6 @@ def SE3TrajFromTransandSO3(transtraj, rtraj): # same chunk.duration
             plist.append(rc.polynomialsvector[i])
         chunk = Trajectory.Chunk(c.duration, plist)
         clist.append(chunk)
-    return Trajectory.Piecewise
+    return Trajectory.PiecewisePolynomialTrajectory(clist)
+
+#################
