@@ -75,4 +75,5 @@ def SE3TrajFromTransandSO3(transtraj, rtraj): # same chunk.duration
         clist.append(chunk)
     return Trajectory.PiecewisePolynomialTrajectory(clist)
 
-###################### Decompose SE3 traj to ROT and Trans tra
+###################### Decompose SE3 traj to ROT and Trans traj ################
+def TransRotTrajFrom
