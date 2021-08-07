@@ -82,4 +82,6 @@ def TransRotTrajFromSE3Traj(SE3traj):
     for c in SE3traj.chunkslist:
         transchunk = Trajectory.Chunk(c.duration, c.polynomialsvector[:3])
         transclist.append(transchunk)
-        rchunk = Trajectory.Chunk(c.duration, c.polynomi
+        rchunk = Trajectory.Chunk(c.duration, c.polynomialsvector[3:])
+        rclist.append(rchunk)
+    tr
