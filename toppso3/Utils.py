@@ -85,4 +85,5 @@ def TransRotTrajFromSE3Traj(SE3traj):
         rchunk = Trajectory.Chunk(c.duration, c.polynomialsvector[3:])
         rclist.append(rchunk)
     transtraj = Trajectory.PiecewisePolynomialTrajectory(transclist)
-    rtraj = Trajectory.Piecewise
+    rtraj = Trajectory.PiecewisePolynomialTrajectory(rclist)
+    return transtraj, rtr
