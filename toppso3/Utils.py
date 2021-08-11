@@ -89,4 +89,4 @@ def TransRotTrajFromSE3Traj(SE3traj):
     return transtraj, rtraj
 
 ##########################SE3 constraint ########################################
-def ComputeSE3Constraints
+def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m =
