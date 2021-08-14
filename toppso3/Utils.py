@@ -92,4 +92,5 @@ def TransRotTrajFromSE3Traj(SE3traj):
 def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = None):
     ndiscrsteps = int((SE3traj.duration + 1e-10) / discrtimestep) + 1
     a = zeros((ndiscrsteps,12))
- 
+    b = zeros((ndiscrsteps,12))
+    c = zeros((ndisc
