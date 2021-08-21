@@ -94,4 +94,5 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
     a = zeros((ndiscrsteps,12))
     b = zeros((ndiscrsteps,12))
     c = zeros((ndiscrsteps,12))
-    transtraj, rtraj = TransRotT
+    transtraj, rtraj = TransRotTrajFromSE3Traj(SE3traj)
+    for i in range(ndis
