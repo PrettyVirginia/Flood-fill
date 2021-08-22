@@ -97,4 +97,6 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
     transtraj, rtraj = TransRotTrajFromSE3Traj(SE3traj)
     for i in range(ndiscrsteps):
         #rotconstraints
-        t = i * 
+        t = i * discrtimestep
+        r = rtraj.Eval(t)
+        rd = r
