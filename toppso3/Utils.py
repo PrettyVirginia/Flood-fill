@@ -113,4 +113,5 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
         rcrd = cross(r,rd)
         rdrd = dot(r,rd)
 
-        Amat =  eye(3) - (1-cnr)/nr2*R + (nr-sn
+        Amat =  eye(3) - (1-cnr)/nr2*R + (nr-snr)/nr3*dot(R,R)
+        C1 = (nr-snr)/nr3 * cros
