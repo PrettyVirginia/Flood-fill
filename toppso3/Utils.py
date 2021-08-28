@@ -109,4 +109,6 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
         R = lie.skewfromvect(r)
 
         snr = sin(nr)
-        c
+        cnr = cos(nr)
+        rcrd = cross(r,rd)
+        rdrd 
