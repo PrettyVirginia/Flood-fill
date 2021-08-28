@@ -103,4 +103,7 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
         rdd = rtraj.Evaldd(t)
         nr = linalg.norm(r)
         nr2 = nr*nr
-        nr3 = nr2*n
+        nr3 = nr2*nr
+        nr4 = nr3*nr
+        nr5 = nr4*nr
+        
