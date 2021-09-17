@@ -136,4 +136,5 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
 
         #transconstraints
         td = transtraj.Evald(t)
-   
+        tdd = transtraj.Evaldd(t)
+        if 
