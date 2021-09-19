@@ -143,3 +143,6 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
 
         a[i,:3] = at
         a[i,6:9] = -at
+        b[i,:3] = bt
+        b[i,6:9] = -bt
+     
