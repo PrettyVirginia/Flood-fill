@@ -151,4 +151,4 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
 
 ######################## se3 traj collision checking ########################
 
-def CheckCollisionSE3Traj( robot, tr
+def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiont
