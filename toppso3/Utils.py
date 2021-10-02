@@ -152,4 +152,4 @@ def ComputeSE3Constraints(SE3traj, taumax, fmax, discrtimestep, I = None, m = No
 ######################## se3 traj collision checking ########################
 
 def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimestep = 1e-3):
-    """CheckCollisionSE3Traj accep
+    """CheckCollisionSE3Traj accepts a robot and trans, rot trajectory object as its inp
