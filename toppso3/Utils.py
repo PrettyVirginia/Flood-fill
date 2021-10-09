@@ -155,4 +155,6 @@ def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimest
     """CheckCollisionSE3Traj accepts a robot and trans, rot trajectory object as its inputs.
        (checkcollisiontimestep is set to 1e-3 as a default value)
        It returns True if any config along the traj is IN-COLLISION.
-  
+    """
+    env = robot.GetEnv()
+    for s in np.arange(0
