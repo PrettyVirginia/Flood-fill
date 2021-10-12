@@ -158,4 +158,6 @@ def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimest
     """
     env = robot.GetEnv()
     for s in np.arange(0, transtraj.duration, checkcollisiontimestep):
-        wi
+        with robot:
+            transformation = eye(4)
+   
