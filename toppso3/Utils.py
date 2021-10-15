@@ -160,4 +160,5 @@ def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimest
     for s in np.arange(0, transtraj.duration, checkcollisiontimestep):
         with robot:
             transformation = eye(4)
-            transformation[0:3,0:3] = lie.E
+            transformation[0:3,0:3] = lie.EvalRotation(R_beg, rtraj, s)
+            transfor
