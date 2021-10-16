@@ -161,4 +161,5 @@ def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimest
         with robot:
             transformation = eye(4)
             transformation[0:3,0:3] = lie.EvalRotation(R_beg, rtraj, s)
-            transfor
+            transformation[0:3,3] = transtraj.Eval(s)
+      
