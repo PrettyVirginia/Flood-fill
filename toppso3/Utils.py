@@ -167,4 +167,5 @@ def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimest
             #print  "s =", s, " ", isincollision
             if (isincollision):
                 return True
-    with rob
+    with robot:
+        robot.SetTransform(transformation)
