@@ -169,4 +169,5 @@ def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimest
                 return True
     with robot:
         robot.SetTransform(transformation)
-        isincollision = (env.CheckCollision(robo
+        isincollision = (env.CheckCollision(robot, CollisionReport()))
+        if (isincollisio
