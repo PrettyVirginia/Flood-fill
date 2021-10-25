@@ -173,4 +173,7 @@ def CheckCollisionSE3Traj( robot, transtraj, rtraj, R_beg,  checkcollisiontimest
         if (isincollision):
             return True
         else:
-            re
+            return False
+
+
+######################### SE3 short
