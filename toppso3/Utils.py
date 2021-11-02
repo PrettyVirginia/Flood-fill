@@ -186,4 +186,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         xlabel('Iteration')
 
     t_sc_start = time.time()
-    originalduration =  se
+    originalduration =  se3traj.duration
+    #return shortcuted 
