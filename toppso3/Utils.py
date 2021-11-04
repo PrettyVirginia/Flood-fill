@@ -187,4 +187,6 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
 
     t_sc_start = time.time()
     originalduration =  se3traj.duration
-    #return shortcuted 
+    #return shortcuted traj
+    if upperlimit < 0:
+        dur = s
