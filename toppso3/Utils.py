@@ -193,4 +193,7 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         upperlimit = se3traj.duration
     else:
         dur = upperlimit
-    attempt
+    attempt = 0
+
+    ## for shortcutting
+    integrationtimestep = 1e
