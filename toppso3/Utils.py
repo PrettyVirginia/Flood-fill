@@ -200,4 +200,6 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
     reparamtimestep = 1e-2                  
     passswitchpointnsteps = 5                
     discrtimestep = 1e-2                    
-    as
+    assert(dur > 10.0*discrtimestep)
+    
+    ncollision
