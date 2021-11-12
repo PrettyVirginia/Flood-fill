@@ -202,4 +202,7 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
     discrtimestep = 1e-2                    
     assert(dur > 10.0*discrtimestep)
     
-    ncollision
+    ncollision = 0
+    nnotretimable = 0 
+    nnotshorter = 0
+    
