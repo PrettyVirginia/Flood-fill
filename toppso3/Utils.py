@@ -211,4 +211,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
    
 
     for it in range(maxiter):
-        if p
+        if plotdura == 1:
+            plt.scatter(it, se3traj.duration)
