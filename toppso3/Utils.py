@@ -215,4 +215,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
             plt.scatter(it, se3traj.duration)
             plt.draw()
         #transtraj, rtraj = TransRotTrajFromSE3Traj(se3traj)
-        #lietraj =
+        #lietraj = lie.SplitTraj2(Rlist, rtraj)
+        if (expect
