@@ -224,4 +224,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
             print "[Utils::Shortcut] trajectory duration is less than discrtimestep.\n"
             break ## otherwise, this will cause an error in TOPP        
         
-        ## select an i
+        ## select an interval for shortcutting
+        t0 = random.ran
