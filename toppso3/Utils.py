@@ -242,4 +242,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
             t1 = t0 + T
 
             if t1 > upperlimit:
-                t
+                t1 = upperlimit
+                if (t1 < 
