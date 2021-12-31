@@ -256,4 +256,4 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         R_end = lietraj.EvalRotation(t1)
         omega0 = lietraj.EvalOmega(t0)
         omega1 = lietraj.EvalOmega(t1)
-        shortcutrtraj = l
+        shortcutrtraj = lie.InterpolateSO3(R_beg,R_end,omega0,omega1, T)
