@@ -259,4 +259,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         shortcutrtraj = lie.InterpolateSO3(R_beg,R_end,omega0,omega1, T)
 
         t_beg = transtraj.Eval(t0)
-        t_
+        t_end = transtraj.Eval(t1)
+        v_beg = trans
