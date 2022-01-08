@@ -263,4 +263,4 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         v_beg = transtraj.Evald(t0)
         v_end = transtraj.Evald(t1)
         
- 
+        shortcuttranstraj = Trajectory.PiecewisePolyn
