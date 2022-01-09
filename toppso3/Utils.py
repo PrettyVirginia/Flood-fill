@@ -263,4 +263,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         v_beg = transtraj.Evald(t0)
         v_end = transtraj.Evald(t1)
         
-        shortcuttranstraj = Trajectory.PiecewisePolynomialTrajectory.FromString(TrajString3rdDeg
+        shortcuttranstraj = Trajectory.PiecewisePolynomialTrajectory.FromString(TrajString3rdDegree(t_beg,t_end,v_beg,v_end, T))
+        
