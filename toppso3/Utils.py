@@ -266,4 +266,6 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         shortcuttranstraj = Trajectory.PiecewisePolynomialTrajectory.FromString(TrajString3rdDegree(t_beg,t_end,v_beg,v_end, T))
         
         shortcutse3traj = SE3TrajFromTransandSO3(shortcuttranstraj, shortcutrtraj)
-        #check feasibility o
+        #check feasibility only for the new portion
+        
+        isincollision = Ch
