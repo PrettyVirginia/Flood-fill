@@ -268,4 +268,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
         shortcutse3traj = SE3TrajFromTransandSO3(shortcuttranstraj, shortcutrtraj)
         #check feasibility only for the new portion
         
-        isincollision = CheckCollisionSE3Traj(robot, shortcuttranstraj, shortcut
+        isincollision = CheckCollisionSE3Traj(robot, shortcuttranstraj, shortcutrtraj, R_beg, discrtimestep)
+        if (not isincol
