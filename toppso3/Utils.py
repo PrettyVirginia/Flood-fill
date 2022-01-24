@@ -275,4 +275,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
             x = topp_inst.solver
             ret = x.RunComputeProfiles(1,1) 
             if (ret == 1):
-                x.resdurati
+                x.resduration
+                ## check whether 
