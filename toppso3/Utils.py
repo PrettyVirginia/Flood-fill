@@ -283,4 +283,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
                     x.WriteResultTrajectory()
                     TOPPed_shortcutse3traj = Trajectory.PiecewisePolynomialTrajectory.FromString(x.restrajectorystring)
                     TOPPed_shortcuttranstraj, TOPPed_shortcutrtraj = TransRotTrajFromSE3Traj(TOPPed_shortcutse3traj)
-                    newlietraj = ReplaceTrajectorySegment(l
+                    newlietraj = ReplaceTrajectorySegment(lietraj, TOPPed_shortcutrtraj , t0, t1)
+   
