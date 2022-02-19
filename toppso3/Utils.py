@@ -288,4 +288,4 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
                     newtranstraj = ReplaceTransTrajectorySegment(transtraj, TOPPed_shortcuttranstraj, t0,t1)
 
                     #####################################################
-      
+                    newrtraj = Trajectory.PiecewisePolynomialT
