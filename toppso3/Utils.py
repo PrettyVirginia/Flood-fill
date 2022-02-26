@@ -293,4 +293,6 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
 
                     Rlist = newlietraj.Rlist
                     rtraj = newrtraj
-                    transtraj = newtrans
+                    transtraj = newtranstraj
+                    lietraj = newlietraj
+   
