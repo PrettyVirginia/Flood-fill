@@ -299,4 +299,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
                     
                     dur = se3traj.duration
 
-                    #print "***************************************
+                    #print "*******************************************"
+                    print "Success at iteration",it + 1,":", t0, t1,
