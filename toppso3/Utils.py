@@ -306,4 +306,6 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
                     #print "*******************************************"
                 else:
                     # print "Not shorter"
-                    n
+                    nnotshorter += 1
+            else: 
+                # 
