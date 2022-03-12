@@ -309,4 +309,6 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
                     nnotshorter += 1
             else: 
                 # print "Not retimable"
-                nnotr
+                nnotretimable += 1
+        else:
+            # print "Collisio
