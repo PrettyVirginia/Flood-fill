@@ -311,4 +311,7 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
                 # print "Not retimable"
                 nnotretimable += 1
         else:
-            # print "Collisio
+            # print "Collision"
+            ncollision += 1
+
+            # print "T:", nnotr
