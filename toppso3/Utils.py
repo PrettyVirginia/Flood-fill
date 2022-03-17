@@ -315,4 +315,4 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
             ncollision += 1
 
             # print "T:", nnotretimable, "; S:", nnotshorter , "; C:", ncollision , "; OK:", attempt
-    print "\033[1;32
+    print "\033[1;32mT:", nnotretimable, "; S:", nnotshorter , "
