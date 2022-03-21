@@ -317,4 +317,5 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
             # print "T:", nnotretimable, "; S:", nnotshorter , "; C:", ncollision , "; OK:", attempt
     print "\033[1;32mT:", nnotretimable, "; S:", nnotshorter , "; C:", ncollision , "; OK:", attempt, "\033[0m"
     print "\033[1;32m", originalduration - se3traj.duration ,"sec. shorter\033[0m"
-    t_sc_end = time.
+    t_sc_end = time.time()
+    print "\033[1;32mRunning time:",t_s
