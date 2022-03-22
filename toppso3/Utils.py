@@ -320,4 +320,8 @@ def SE3Shortcut(robot, taumax, fmax, vmax, se3traj, Rlist, maxiter, expecteddura
     t_sc_end = time.time()
     print "\033[1;32mRunning time:",t_sc_end-t_sc_start, "sec.\033[0m"
     
-    return se3
+    return se3traj, Rlist
+
+
+
+##########################
