@@ -330,4 +330,7 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
     """ReplaceTransTrajectorySegment replaces the segment (t0, t1) in the (arbitrary degree) originaltranstraj 
     with an (arbitrary degree) transtrajsegment.
     """
-    assert(
+    assert(t1 > t0)
+    
+    newchunkslist = []
+    i0, rem0 = or
