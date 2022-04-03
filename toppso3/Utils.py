@@ -339,4 +339,5 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
     ## check if t0 falls in the first chunk. 
     ## if not, insert chunk 0 to chunk i0 - 1 into newchunkslist
     if i0 > 0:
-        for c in originaltranstra
+        for c in originaltranstraj.chunkslist[0: i0]:
+            newchunksl
