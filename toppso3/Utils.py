@@ -343,4 +343,4 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
             newchunkslist.append(c)
 
     ## remainderchunk0
-    remch
+    remchunk0 = Trajectory.Chunk(rem0, originaltranstraj.chu
