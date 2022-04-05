@@ -347,4 +347,5 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
     newchunkslist.append(remchunk0)
 
     ## insert transtrajsegment
-    
+    for c in transtrajsegment.chunkslist:
+        n
