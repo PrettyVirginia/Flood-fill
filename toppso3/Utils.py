@@ -348,4 +348,7 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
 
     ## insert transtrajsegment
     for c in transtrajsegment.chunkslist:
-        n
+        newchunkslist.append(c)
+
+    ## remainderchunk1
+    newpoly_li
