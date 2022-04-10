@@ -354,4 +354,6 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
     newpoly_list = []
     for p in originaltranstraj.chunkslist[i1].polynomialsvector:
         ## perform variable changing of p(x) = a_n(x)^n + a_(n-1)(x)^(n-1) + ...
- 
+        ## by x = y + rem1
+        
+        a = p.q ## coeffici
