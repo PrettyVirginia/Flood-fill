@@ -359,4 +359,6 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
         a = p.q ## coefficient vector with python convention (highest degree first)
         ## a is a poly1d object
         r = a.r ## polynomial roots
-        for i in r
+        for i in range(len(r)):
+            r[i] = r[i] - rem1
+   
