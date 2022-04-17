@@ -361,4 +361,5 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
         r = a.r ## polynomial roots
         for i in range(len(r)):
             r[i] = r[i] - rem1
-        b = np.poly1d(r, True) ## reconstruct 
+        b = np.poly1d(r, True) ## reconstruct a new polynomial from roots
+        ## b is a po
