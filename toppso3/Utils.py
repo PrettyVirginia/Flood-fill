@@ -365,4 +365,4 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
         ## b is a poly1d object
         b = b*a.coeffs[0] ## multiply back by a_n *** this multiplication does not commute
         
-        newpoly = Trajectory.Polyno
+        newpoly = Trajectory.Polynomial(b.coeffs.tolist()[::-1]) ## TOPP co
