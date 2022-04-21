@@ -366,4 +366,5 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
         b = b*a.coeffs[0] ## multiply back by a_n *** this multiplication does not commute
         
         newpoly = Trajectory.Polynomial(b.coeffs.tolist()[::-1]) ## TOPP convention is weak-term-first
-        newpoly_list.ap
+        newpoly_list.append(newpoly)
+    remchunk1 = Trajectory.Chu
