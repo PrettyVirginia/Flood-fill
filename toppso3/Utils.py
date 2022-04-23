@@ -369,3 +369,6 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
         newpoly_list.append(newpoly)
     remchunk1 = Trajectory.Chunk(originaltranstraj.chunkslist[i1].duration - rem1, newpoly_list)
     newchunkslist.append(remchunk1)
+    
+    ## insert remaining chunks
+    i
