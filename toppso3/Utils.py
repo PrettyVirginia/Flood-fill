@@ -380,4 +380,4 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
 
 
 
-#######################
+############################# traj collision checking ###########
