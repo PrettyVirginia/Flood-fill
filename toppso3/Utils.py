@@ -383,4 +383,5 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
 ############################# traj collision checking ###############################
 
 def CheckCollisionTraj(robot, trajectory, R_beg, checkcollisiontimestep = 1e-3):
-    """CheckCollisionTraj a
+    """CheckCollisionTraj accepts a robot and a trajectory object as its inputs.
+       (c
