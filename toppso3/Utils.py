@@ -382,4 +382,4 @@ def ReplaceTransTrajectorySegment(originaltranstraj, transtrajsegment, t0,t1):
 
 ############################# traj collision checking ###############################
 
-def CheckCollisionTraj(rob
+def CheckCollisionTraj(robot, trajectory, R_beg, checkcollision
