@@ -388,4 +388,5 @@ def CheckCollisionTraj(robot, trajectory, R_beg, checkcollisiontimestep = 1e-3):
        It returns True if any config along the traj is IN-COLLISION.
     """
     env = robot.GetEnv()
-    traj 
+    traj = trajectory
+    for s in np.arange(0, tra
