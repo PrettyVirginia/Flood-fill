@@ -391,3 +391,5 @@ def CheckCollisionTraj(robot, trajectory, R_beg, checkcollisiontimestep = 1e-3):
     traj = trajectory
     for s in np.arange(0, traj.duration, checkcollisiontimestep):
         with robot:
+            transformation = eye(4)
+            transform
