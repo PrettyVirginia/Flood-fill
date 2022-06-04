@@ -399,4 +399,5 @@ def CheckCollisionTraj(robot, trajectory, R_beg, checkcollisiontimestep = 1e-3):
             if (isincollision):
                 return True
     with robot:
-        robot.SetTransform(transform
+        robot.SetTransform(transformation)
+        isincollision = (env.CheckCollision(r
