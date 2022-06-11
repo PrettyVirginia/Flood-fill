@@ -403,4 +403,9 @@ def CheckCollisionTraj(robot, trajectory, R_beg, checkcollisiontimestep = 1e-3):
         isincollision = (env.CheckCollision(robot, CollisionReport()))
         if (isincollision):
             return True
-        els
+        else:
+            return False
+
+
+
+############
