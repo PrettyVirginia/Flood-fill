@@ -415,4 +415,7 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
         plt.ion()
         plt.show()
         ylabel('Trajectory duration (s)')
+        xlabel('Iteration')
     
+    
+    t_sc_start =
