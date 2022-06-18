@@ -413,4 +413,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
     if trackingplot == 1:
         plt.axis([0, maxiter, 0, lietraj.duration])
         plt.ion()
-        plt.
+        plt.show()
+        ylabel('Trajectory duration (s)')
+    
