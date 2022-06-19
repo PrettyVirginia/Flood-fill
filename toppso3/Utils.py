@@ -418,4 +418,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
         xlabel('Iteration')
     
     
-    t_sc_start =
+    t_sc_start = time.time()
+    originalduration =  lietraj.duration
