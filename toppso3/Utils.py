@@ -420,3 +420,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
     
     t_sc_start = time.time()
     originalduration =  lietraj.duration
+    #return shortcuted traj
+    if upperlimit <
