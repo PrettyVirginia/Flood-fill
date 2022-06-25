@@ -423,4 +423,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
     #return shortcuted traj
     if upperlimit < 0:
         dur = lietraj.duration
-        upperli
+        upperlimit = lietraj.duration
+    else:
+        dur = upperlim
