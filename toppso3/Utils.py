@@ -430,4 +430,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
 
     ## for shortcutting
     integrationtimestep = 1e-2            
-    repar
+    reparamtimestep = 1e-2                
+    passswitc
