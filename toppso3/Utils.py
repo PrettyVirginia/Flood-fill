@@ -434,4 +434,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
     passswitchpointnsteps = 5            
     discrtimestep = 1e-2                 
 
-    constraintsstring = st
+    constraintsstring = str(discrtimestep)
+    constraintsstring += "\n" 
