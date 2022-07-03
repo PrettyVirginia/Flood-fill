@@ -436,4 +436,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
 
     constraintsstring = str(discrtimestep)
     constraintsstring += "\n" + ' '.join([str(v) for v in taumax])
-    if not(i
+    if not(inertia is None):
+        for v in inertia:
+            con
