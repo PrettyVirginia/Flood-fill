@@ -447,4 +447,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
     nnotretimable = 0 
     nnotshorter = 0
 
-    for it
+    for it in range(maxiter):
+        if trackingplot =
