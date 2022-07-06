@@ -443,4 +443,8 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
     assert(dur > 10.0*discrtimestep)
     
 
-    ncollision =
+    ncollision = 0
+    nnotretimable = 0 
+    nnotshorter = 0
+
+    for it
