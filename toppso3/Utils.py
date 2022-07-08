@@ -452,3 +452,4 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
             plt.scatter(it, lietraj.duration)
             plt.draw()
         if (expectedduration > 0): # check, if newlietraj.duration is short enough, stop SHORTCUTING
+            if (lietraj.duration < expectedduration):
