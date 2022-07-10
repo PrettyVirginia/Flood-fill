@@ -455,3 +455,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
             if (lietraj.duration < expectedduration):
                 print "\033[1;32mTrajectory's duration is already shorter than expected time --> stop shortcuting\033[0m"
                 break
+        if (dur < discrtimestep):
+         
