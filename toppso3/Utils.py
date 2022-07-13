@@ -457,4 +457,4 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
                 break
         if (dur < discrtimestep):
             print "[Utils::Shortcut] trajectory duration is less than discrtimestep.\n"
-            break ## othe
+            break ## otherwise, this will cause an error in TOPP   
