@@ -462,4 +462,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
         ## select an interval for shortcutting
         t0 = random.rand()* dur
         
-    
+        if meanduration == 0:
+            meanduration 
