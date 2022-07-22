@@ -469,4 +469,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
         t1 = t0 + T
 
         while (T < 2.0*discrtimestep):
-            t0 = 
+            t0 = random.rand()*dur
+            if mean
