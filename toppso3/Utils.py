@@ -476,4 +476,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
             T = random.rand()*min(meanduration, dur - t0)
             t1 = t0 + T
 
-          
+            if t1 > upperlimit:
+                t1 = upperlimit
+  
