@@ -478,4 +478,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
 
             if t1 > upperlimit:
                 t1 = upperlimit
-  
+                if (t1 < t0):
+                    temp
