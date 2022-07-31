@@ -485,4 +485,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
                     T = t1 - t0
 
         # print "\n\nShortcutting iteration", it + 1
-        # print t
+        # print t0, t1, t1- t0       
+        # interpolate from 
