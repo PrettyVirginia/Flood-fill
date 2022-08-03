@@ -490,4 +490,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
         R_beg = lietraj.EvalRotation(t0)
         R_end = lietraj.EvalRotation(t1)
         omega0 = lietraj.EvalOmega(t0)
-        omega1 = lietraj.EvalOmega(
+        omega1 = lietraj.EvalOmega(t1)
+
+        shortcuttraj = lie.InterpolateSO3(R_beg,R_e
