@@ -495,4 +495,4 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
         shortcuttraj = lie.InterpolateSO3(R_beg,R_end,omega0,omega1, T)
         #check feasibility only for the new portion
 
-        isincolli
+        isincollision = CheckCollisionTraj(robot, shortcuttraj, R_beg, discrti
