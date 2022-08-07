@@ -501,4 +501,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
             abc = TOPPbindings.RunComputeSO3Constraints(str(shortcuttraj),constraintsstring)# discrtimestep)
             a,b,c = lie.Extractabc(abc)
 
-            topp_inst = TOPP.QuadraticConstraints(shortcuttraj, discrt
+            topp_inst = TOPP.QuadraticConstraints(shortcuttraj, discrtimestep, vmax, list(a), list(b), list(c))
+          
