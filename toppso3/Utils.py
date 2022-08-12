@@ -505,4 +505,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
             x = topp_inst.solver
             ret = x.RunComputeProfiles(1,1) 
             if (ret == 1):
-               
+                x.resduration
+                ## check wheth
