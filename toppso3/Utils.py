@@ -506,4 +506,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
             ret = x.RunComputeProfiles(1,1) 
             if (ret == 1):
                 x.resduration
-                ## check wheth
+                ## check whether the new one has shorter duration
+       
