@@ -509,4 +509,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
                 ## check whether the new one has shorter duration
                 if (x.resduration + 0.01 < T): #skip if not shorter than 0.3 s
                     
-                    x.ReparameterizeTr
+                    x.ReparameterizeTrajectory()
+                    x.WriteResultTrajector
