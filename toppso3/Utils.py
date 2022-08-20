@@ -513,4 +513,4 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
                     x.WriteResultTrajectory()
                     TOPPed_shortcuttraj = Trajectory.PiecewisePolynomialTrajectory.FromString(x.restrajectorystring)
 
-                    newlietraj =
+                    newlietraj = ReplaceTrajectorySegment(lietraj,TOPPed_shortcuttraj, t0,
