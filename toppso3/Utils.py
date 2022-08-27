@@ -522,4 +522,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
                     #print "T:", nnotretimable, "; S:", nnotshorter , "; C:", ncollision , "; OK:", attempt
                     #print "*******************************************"
                 else:
-                    # print "Not
+                    # print "Not shorter"
+                    nnotshorter += 1
+     
