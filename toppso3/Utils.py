@@ -526,4 +526,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
                     nnotshorter += 1
             else: 
                 # print "Not retimable"
-     
+                nnotretimable += 1
+        else:
+   
