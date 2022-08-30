@@ -529,4 +529,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
                 nnotretimable += 1
         else:
             # print "Collision"
-            ncollision += 
+            ncollision += 1
+
+            # print "T:", nnotretimable, "; 
