@@ -534,4 +534,4 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
             # print "T:", nnotretimable, "; S:", nnotshorter , "; C:", ncollision , "; OK:", attempt
         
     print "\033[1;32mT:", nnotretimable, "; S:", nnotshorter , "; C:", ncollision , "; OK:", attempt, "\033[0m"
-    print
+    print "\033[1;32m", originalduration - lietraj.dur
