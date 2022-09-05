@@ -539,3 +539,5 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
     print "\033[1;32mRunning time:",t_sc_end-t_sc_start, "sec.\033[0m"
 
     return lietraj
+
+################## REPLACE TRAJECTORY SEGMENT SO3 #####
