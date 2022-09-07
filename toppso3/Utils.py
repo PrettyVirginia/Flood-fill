@@ -544,4 +544,6 @@ def Shortcut(robot, taumax, vmax, lietraj,  maxiter, expectedduration = -1,  mea
 def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     """ReplaceTrajectorySegment replaces the segment (t0, t1), it returns a LieTraj variable (Rotationlist and Trajectorylist)   """
     assert(t1 > t0)
-    newtrajlist
+    newtrajlist = []
+    newRlist = []
+    i0, rem0 = originallietraj.Fin
