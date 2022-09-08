@@ -549,4 +549,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     i0, rem0 = originallietraj.FindTrajIndex(t0)
     i1, rem1 = originallietraj.FindTrajIndex(t1)
 
-    # print "t" , originallietraj.FindTraj
+    # print "t" , originallietraj.FindTrajIndex(t0) ##
+    # print "t" , originallietraj.FindTrajIndex(t1)
