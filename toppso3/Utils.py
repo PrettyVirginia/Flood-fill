@@ -561,4 +561,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     ## remaindertraj0
     newchunkslist = []
     ic0, remc0 = originallietraj.trajlist[i0].FindChunkIndex(rem0)
-    # print "c0", originallietraj.trajlist[i0].Fi
+    # print "c0", originallietraj.trajlist[i0].FindChunkIndex(rem0) ##
+          # check if
