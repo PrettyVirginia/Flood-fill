@@ -565,4 +565,6 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
           # check if rem0 falls in the first chunk, if not, ...
     if ic0 > 0:
         for c in originallietraj.trajlist[i0].chunkslist[0: ic0]:
-            newchunk
+            newchunkslist.append(c)
+          # remainderchunk0
+    remchunk0 =
