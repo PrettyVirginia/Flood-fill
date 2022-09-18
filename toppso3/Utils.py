@@ -563,4 +563,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     ic0, remc0 = originallietraj.trajlist[i0].FindChunkIndex(rem0)
     # print "c0", originallietraj.trajlist[i0].FindChunkIndex(rem0) ##
           # check if rem0 falls in the first chunk, if not, ...
-  
+    if ic0 > 0:
+        for c in originallietraj.trajlist[i
