@@ -576,4 +576,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
 
 
     ## insert trajsegment
-    newt
+    newtrajlist.append(trajsegment)
+    newRlist.append
