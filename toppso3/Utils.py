@@ -583,4 +583,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
 ######################################
     ## For the traj right after the trajsegment 
     ## remaindertraj1
-    n
+    newchunkslist = []
+    ic1, remc1 = originallietraj.trajli
