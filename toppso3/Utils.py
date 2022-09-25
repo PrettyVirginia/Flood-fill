@@ -586,3 +586,4 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     newchunkslist = []
     ic1, remc1 = originallietraj.trajlist[i1].FindChunkIndex(rem1)
     newpoly_list = []
+    for p in originallietraj.trajlist[i1].chunkslist[i
