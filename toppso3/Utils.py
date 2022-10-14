@@ -604,4 +604,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     remchunk1 = Trajectory.Chunk(originallietraj.trajlist[i1].chunkslist[ic1].duration - remc1, newpoly_list)
     newchunkslist.append(remchunk1)
 
-    ## insert rem
+    ## insert remaining chunk 
+    if ic1 < len(ori
