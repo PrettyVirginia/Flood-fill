@@ -608,3 +608,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     if ic1 < len(originallietraj.trajlist[i1].chunkslist) - 1:
         for c in originallietraj.trajlist[i1].chunkslist[ic1 + 1: len(originallietraj.trajlist[i1].chunkslist)]:
             newchunkslist.append(c)
+    ## insert 
+    remtraj1 = Trajectory.Piec
