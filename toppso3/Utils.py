@@ -611,4 +611,6 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     ## insert 
     remtraj1 = Trajectory.PiecewisePolynomialTrajectory(newchunkslist)
     newtrajlist.append(remtraj1)
-    newRlist.append(originallietraj.Rlist[i1])##ROTATION Should be at originalli
+    newRlist.append(originallietraj.Rlist[i1])##ROTATION Should be at originallietraj.Rlist[i1] ##
+
+#############################
