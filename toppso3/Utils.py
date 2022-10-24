@@ -613,4 +613,6 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
     newtrajlist.append(remtraj1)
     newRlist.append(originallietraj.Rlist[i1])##ROTATION Should be at originallietraj.Rlist[i1] ##
 
-#############################
+###############################
+    # insert the remainder trajectoris
+    if i1 < 
