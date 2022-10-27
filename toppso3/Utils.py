@@ -622,4 +622,10 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
             newRlist.append(originallietraj.Rlist[Rindex])
             Rindex += 1
  
-    return lie.LieTraj(newRlis
+    return lie.LieTraj(newRlist, newtrajlist)
+
+
+
+
+
+##########################
