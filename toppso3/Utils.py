@@ -632,4 +632,5 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
 def TrajStringFromTrajList(trajlist):
     trajectorystring = ""
     for i in range(len(trajlist)):
-      
+        trajectorystring += "\n"
+        trajectorystring 
