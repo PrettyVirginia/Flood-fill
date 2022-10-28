@@ -628,4 +628,6 @@ def ReplaceTrajectorySegment(originallietraj, trajsegment, t0, t1):
 
 
 
-########################### FROM TRAJ LIST TO TRAJSTRING ######################
+########################### FROM TRAJ LIST TO TRAJSTRING #############################
+def TrajStringFromTrajList(trajlist):
+    traject
