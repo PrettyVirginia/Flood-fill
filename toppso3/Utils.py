@@ -633,4 +633,5 @@ def TrajStringFromTrajList(trajlist):
     trajectorystring = ""
     for i in range(len(trajlist)):
         trajectorystring += "\n"
-        trajectorystring 
+        trajectorystring += str(trajlist[i])
+    trajectorystring = string.ls
