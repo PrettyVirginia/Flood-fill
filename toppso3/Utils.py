@@ -635,4 +635,6 @@ def TrajStringFromTrajList(trajlist):
         trajectorystring += "\n"
         trajectorystring += str(trajlist[i])
     trajectorystring = string.lstrip(trajectorystring) # remove leading "\n"
-    return trajec
+    return trajectorystring
+
+########################## SAVE LIETRAJ as T
