@@ -642,4 +642,5 @@ def TrajStringFromTrajList(trajlist):
 def SaveLietrajAsTextFiles(lietraj, RlistFilename, trajlistFilename):
     ## Save Rlist
     txtRlist = ""
-    for i
+    for i in range(len(lietraj.Rlist)):
+        temp = li
