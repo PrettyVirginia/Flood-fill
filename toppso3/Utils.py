@@ -652,4 +652,7 @@ def SaveLietrajAsTextFiles(lietraj, RlistFilename, trajlistFilename):
                 separator = " "
             txtRlist += "\n"
     with open(RlistFilename,"wt") as file:
-        file.write(txtR
+        file.write(txtRlist)
+    ## Save trajlist
+    txttrajlist = ""
+    f
