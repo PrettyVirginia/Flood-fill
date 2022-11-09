@@ -655,4 +655,5 @@ def SaveLietrajAsTextFiles(lietraj, RlistFilename, trajlistFilename):
         file.write(txtRlist)
     ## Save trajlist
     txttrajlist = ""
-    f
+    for i in range(len(lietraj.trajlist)):
+        txt
