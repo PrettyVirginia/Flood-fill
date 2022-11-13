@@ -668,4 +668,5 @@ def SaveLietrajAsTextFiles(lietraj, RlistFilename, trajlistFilename):
 def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
     ## Read Rlist
     with open(Rlistfilename, 'r') as file:
-        da
+        data_Rliststring = file.read()
+    list = [float(x) for x i
