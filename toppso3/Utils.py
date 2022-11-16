@@ -669,4 +669,5 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
     ## Read Rlist
     with open(Rlistfilename, 'r') as file:
         data_Rliststring = file.read()
-    list = [float(x) for x i
+    list = [float(x) for x in data_Rliststring.split()]
+    n = len(list)
