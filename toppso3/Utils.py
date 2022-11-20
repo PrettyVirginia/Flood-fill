@@ -675,4 +675,5 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
         print "\033[91mWRONG DATA, RECHECK ", Rlistfilename, " file!!!\033[0m" 
 
     Rlist = []
-    f
+    for i in range(n):
+        temp = array([[list[i*9+0], list[i
