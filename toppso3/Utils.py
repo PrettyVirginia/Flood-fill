@@ -681,4 +681,5 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
                       [list[i*9+6], list[i*9+7], list[i*9+8]]])
         Rlist.append(temp)
 
-    ## R
+    ## Read trajlist
+    with open(trajlistfilename, 'r') as file:
