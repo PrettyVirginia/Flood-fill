@@ -688,3 +688,4 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
     trajlist = []
     trajstringlist = []
     temptrajstring = ""
+    temp = buff.readline() # ingore the 
