@@ -689,4 +689,6 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
     trajstringlist = []
     temptrajstring = ""
     temp = buff.readline() # ingore the first line which contains "t"
-    while buff.pos < buff.len
+    while buff.pos < buff.len:
+        temp = buff.readline()
+        if 
