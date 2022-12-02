@@ -695,4 +695,5 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
             temptrajstring += temp
         else:
             trajstringlist.append(temptrajstring)
-  
+            temptrajstring = ""
+    trajstringlist.appen
