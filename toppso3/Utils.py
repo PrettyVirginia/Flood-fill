@@ -697,4 +697,5 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
             trajstringlist.append(temptrajstring)
             temptrajstring = ""
     trajstringlist.append(temptrajstring) # add the last trajstring
- 
+    for t_str in trajstringlist:
+        traj = Traj
