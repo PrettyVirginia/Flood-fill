@@ -698,4 +698,5 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
             temptrajstring = ""
     trajstringlist.append(temptrajstring) # add the last trajstring
     for t_str in trajstringlist:
-        traj = Traj
+        traj = Trajectory.PiecewisePolynomialTrajectory.FromString(t_str)
+     
