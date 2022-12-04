@@ -701,4 +701,6 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
         traj = Trajectory.PiecewisePolynomialTrajectory.FromString(t_str)
         trajlist.append(traj)
 
-    return  lie.LieTraj(
+    return  lie.LieTraj(Rlist, trajlist)
+
+################### SAVE SE3 traj#############
