@@ -707,4 +707,6 @@ def ReadLieTrajFiles(Rlistfilename, trajlistfilename):
 ## return 2 files: rlistFilename.txt and se3listFilename.txt
 def SaveSE3trajAsTextFiles(se3traj, rlist, rlistFilename, se3listFilename):
     ## Save Rlist
-    t
+    txtrlist = ""
+    for i in range(len(rlist)):
+        t
