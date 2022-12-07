@@ -711,4 +711,5 @@ def SaveSE3trajAsTextFiles(se3traj, rlist, rlistFilename, se3listFilename):
     for i in range(len(rlist)):
         temp = rlist[i]
         for row in range(0,3):
-            
+            separator = ""
+            for col in range(0,3):
