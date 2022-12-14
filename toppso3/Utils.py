@@ -714,4 +714,5 @@ def SaveSE3trajAsTextFiles(se3traj, rlist, rlistFilename, se3listFilename):
             separator = ""
             for col in range(0,3):
                 txtrlist += separator
-                txtrlist += str(temp
+                txtrlist += str(temp[row,col])
+                separator = " "
