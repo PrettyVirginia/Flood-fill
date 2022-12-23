@@ -726,4 +726,5 @@ def SaveSE3trajAsTextFiles(se3traj, rlist, rlistFilename, se3listFilename):
         txtse3trajlist += str(se3traj.chunkslist[i]) 
         txtse3trajlist += "\n"
     with open(se3listFilename,"wt") as file:
-        file.w
+        file.write(txtse3trajlist)
+    ## if saved successfully, retur
