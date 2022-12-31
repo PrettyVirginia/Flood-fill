@@ -736,4 +736,7 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
     ## Read rlist
     with open(rlistfilename, 'r') as file:
         data_rliststring = file.read()
-    list = [float(x) for x in data_rlist
+    list = [float(x) for x in data_rliststring.split()]
+    n = len(list)/9
+    if (n==0):
+        
