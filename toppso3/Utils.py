@@ -744,4 +744,5 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
     rlist = []
     for i in range(n):
         temp = array([[list[i*9+0], list[i*9+1], list[i*9+2]],
-                      [list[i
+                      [list[i*9+3], list[i*9+4], list[i*9+5]],
+                
