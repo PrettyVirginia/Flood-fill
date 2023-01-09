@@ -754,4 +754,5 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
     buff = StringIO.StringIO(data_se3trajliststring)
     se3trajlist = []
     se3trajstringlist = []
-    tempse3tra
+    tempse3trajstring = ""
+    temp = buff.readline() # ingore 
