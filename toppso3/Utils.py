@@ -755,4 +755,5 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
     se3trajlist = []
     se3trajstringlist = []
     tempse3trajstring = ""
-    temp = buff.readline() # ingore 
+    temp = buff.readline() # ingore the first line which contains "t"
+    while buff.pos
