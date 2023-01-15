@@ -759,4 +759,6 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
     while buff.pos < buff.len:
         temp = buff.readline()
         if (temp != 't\n'):
-            tempse3trajst
+            tempse3trajstring += temp
+        else:
+            se3tra
