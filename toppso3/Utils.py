@@ -764,4 +764,5 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
             se3trajstringlist.append(tempse3trajstring)
             tempse3trajstring = ""
     se3trajstringlist.append(tempse3trajstring) # add the last trajstring
-    for t_str i
+    for t_str in se3trajstringlist:
+        se3traj = Trajectory.Pi
