@@ -762,4 +762,5 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
             tempse3trajstring += temp
         else:
             se3trajstringlist.append(tempse3trajstring)
-            tempse3trajs
+            tempse3trajstring = ""
+    se3trajstringlist.append(tempse3t
