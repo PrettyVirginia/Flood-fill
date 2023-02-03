@@ -780,4 +780,5 @@ def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[]
     figure(figstart+3)
     clf()
     tvect = arange(0, transtraj.duration + dt, dt)
-    qdvect = array([transtraj.Evald(t) for t i
+    qdvect = array([transtraj.Evald(t) for t in tvect])
+    plt.plot(tvect, qdvect[:,0], '--', label =
