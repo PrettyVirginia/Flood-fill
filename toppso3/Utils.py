@@ -775,3 +775,4 @@ def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[]
     transtraj, rottraj = TransRotTrajFromSE3Traj(se3traj)
     lietraj = lie.SplitTraj2(rlist, rottraj)
     
+    lietraj.Plot(dt,figstart,vmax[:3],accelmax,tau
