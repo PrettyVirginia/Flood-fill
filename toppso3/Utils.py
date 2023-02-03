@@ -772,4 +772,6 @@ def ReadSE3TrajFiles(rlistfilename, se3trajfilename):
 
 #########################PLOT SE3 ###################################
 def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[],fmax=[], inertia = None, m = None):
-    transtraj, rottraj = TransRotTrajFromSE3Tra
+    transtraj, rottraj = TransRotTrajFromSE3Traj(se3traj)
+    lietraj = lie.SplitTraj2(rlist, rottraj)
+    
