@@ -778,4 +778,6 @@ def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[]
     lietraj.Plot(dt,figstart,vmax[:3],accelmax,taumax,inertia)
     
     figure(figstart+3)
+    clf()
+    tvect = arange(0, transtraj.duration + dt, dt)
     
