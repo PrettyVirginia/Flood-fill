@@ -785,4 +785,6 @@ def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[]
     plt.plot(tvect, qdvect[:,1], '-.', label = r'$v^2$',linewidth=2)
     plt.plot(tvect, qdvect[:,2], '-', label = r'$v^3$',linewidth=2)
     plt.legend()
-    ylabel('Tr
+    ylabel('Translation velocities (m/s)')
+    xlabel('Time (s)')
+    
