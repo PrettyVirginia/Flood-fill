@@ -793,4 +793,5 @@ def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[]
         plt.plot([0, transtraj.duration],[-v, -v], '-.',color = 'k')
 
     figure(figstart+4)
-    cl
+    clf()
+    qddvect = array([transtraj.Evaldd(t) 
