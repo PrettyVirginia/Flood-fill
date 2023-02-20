@@ -803,3 +803,5 @@ def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[]
     xlabel('Time (s)')
     for v in fmax[:3]:
         plt.plot([0, transtraj.duration],[v, v], '-.',color = 'k')
+    for v in fmax[:3]:
+        plt.plot([0, transtraj.
