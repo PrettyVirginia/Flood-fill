@@ -808,4 +808,4 @@ def PlotSE3(se3traj, rlist,  dt = 0.01, figstart=0,vmax=[],accelmax=[],taumax=[]
 
 ###########################CheckIntersection ##########################
 def CheckIntersection(interval0, interval1):
-    ""
+    """CheckIntersection checks whether interval0 intersects
