@@ -814,4 +814,7 @@ def CheckIntersection(interval0, interval1):
     if (np.max(interval0) < np.min(interval1)):
         return False
 
-    elif (np.max(interval1) < 
+    elif (np.max(interval1) < np.min(interval0)):
+        return False
+    
+    
