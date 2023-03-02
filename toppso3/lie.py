@@ -272,3 +272,56 @@ def InterpolateSO3(R0,R1,omega0,omega1,T):
 
     for i in range(3):
         polylist.append(Trajectory.Polynomial([0,c[i]/T,b[i]/T2,a[i]/T3]))
+    chunk = Trajectory.Chunk(T,polylist)
+    return Trajectory.PiecewisePolynomialTrajectory([chunk])
+    
+
+
+def EvalRotation(R0,traj,t):
+    return(dot(R0,expmat(traj.Eval(t))))
+    
+
+def TensorProd(a,A):
+    res = zeros((3,3,3))
+    for i in range(3):
+        res[i,:,:] = a[i]*A
+    return res
+
+
+def ComputeSO3Torques(rtraj, I = None, dt=0.01):
+    if I is None:
+        I = eye(3)
+    tvect = arange(0, rtraj.duration + dt, dt)
+    tauvect = []
+    for t in tvect:
+        r = rtraj.Eval(t)
+        rd = rtraj.Evald(t)
+        rdd = rtraj.Evaldd(t)
+        taut = tau(r,rd,rdd,I)
+        tauvect.append(taut)
+    return tvect,array(tauvect)
+    
+
+def ComputeSO3Constraints(rtraj, taumax, discrtimestep, I = None):
+    ndiscrsteps = int((rtraj.duration + 1e-10) / discrtimestep) + 1
+    a = zeros((ndiscrsteps,6))
+    b = zeros((ndiscrsteps,6))
+    c = zeros((ndiscrsteps,6))
+    for i in range(ndiscrsteps):
+        t = i * discrtimestep
+        r = rtraj.Eval(t)
+        rd = rtraj.Evald(t)
+        rdd = rtraj.Evaldd(t)
+        nr = linalg.norm(r)
+        nr2 = nr*nr
+        nr3 = nr2*nr
+        nr4 = nr3*nr
+        nr5 = nr4*nr
+        R = skewfromvect(r)
+
+        snr = sin(nr)
+        cnr = cos(nr)
+        rcrd = cross(r,rd)
+        rdrd = dot(r,rd)
+        
+        Amat =  eye(3) - (1-cnr)/nr2*R + (nr-snr)/nr3*dot(R,R)
