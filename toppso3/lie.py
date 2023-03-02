@@ -213,3 +213,62 @@ def Ctensor(r):
     nr = linalg.norm(r)
     nr2 = nr*nr
     nr3 = nr2*nr
+    nr4 = nr3*nr
+    nr5 = nr4*nr
+    R = skewfromvect(r)
+    C1 = -(nr-sin(nr))/nr3 * dot(Eps,R)
+    C2 = -(2*cos(nr)+nr*sin(nr)-2)/nr4 * TensorProd(r,R)
+    C3 = (3*sin(nr)-nr*cos(nr) - 2*nr)/nr5 * TensorProd(r,dot(R,R))
+    return C1+C2+C3
+
+def Cterm(r,rd):
+    nr = linalg.norm(r)
+    nr2 = nr*nr
+    nr3 = nr2*nr
+    nr4 = nr3*nr
+    nr5 = nr4*nr
+    C1 = (nr-sin(nr))/nr3 * cross(rd,cross(r,rd))
+    C2 = -(2*cos(nr)+nr*sin(nr)-2)/nr4 * dot(r,rd)*cross(r,rd)
+    C3 = (3*sin(nr)-nr*cos(nr) - 2*nr)/nr5 * dot(r,rd)*cross(r,cross(r,rd))
+    return C1+C2+C3
+   
+
+def omega(r,rd):
+    return dot(Amat(r),rd)
+
+def alpha(r,rd,rdd):
+    return dot(Bmat(r),rdd) + dot(rd,tensordot(Ctensor(r),rd,([2],[0])))
+
+def tau(r,rd,rdd,I):
+    omega0 = omega(r,rd)
+    return dot(I,alpha(r,rd,rdd)) + cross(omega0,dot(I,omega0))
+
+
+def InterpolateSO3(R0,R1,omega0,omega1,T):
+
+    r1 = logvect(dot(R0.T,R1))
+    u = linalg.solve(Amat(r1),omega1*T)
+
+    c = omega0*T
+    M = array([[1,0,0,1,0,0],
+               [0,1,0,0,1,0],
+               [0,0,1,0,0,1],
+               [3,0,0,2,0,0],
+               [0,3,0,0,2,0],
+               [0,0,3,0,0,2]])
+    y = array([r1[0]-c[0],
+               r1[1]-c[1],
+               r1[2]-c[2],
+               u[0]-c[0],
+               u[1]-c[1],
+               u[2]-c[2]])
+
+    x = linalg.solve(M,y)
+    a = x[:3]
+    b = x[3:]
+    T2 = T*T
+    T3 = T2*T
+    polylist = []
+
+    for i in range(3):
+        polylist.append(Trajectory.Polynomial([0,c[i]/T,b[i]/T2,a[i]/T3]))
