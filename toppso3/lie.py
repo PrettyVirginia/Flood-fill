@@ -161,3 +161,55 @@ def SplitTraj2(Rlist,traj):
     while chunkindex < len(traj.chunkslist):
         clist.append(traj.chunkslist[chunkindex])
         chunkindex += 1
+    trajlist.append(Trajectory.PiecewisePolynomialTrajectory(clist))
+        
+    return LieTraj(Rlist,trajlist)
+
+
+def skewfromvect(r):
+    return array([[0,-r[2],r[1]],[r[2],0,-r[0]],[-r[1],r[0],0]])
+
+def vectfromskew(R):
+    return array([R[2,1],R[0,2],R[1,0]])
+
+def expmat(r):
+    nr = linalg.norm(r)
+    if(nr<=1e-10):
+        return eye(3)
+    R = skewfromvect(r)
+    return eye(3) + sin(nr)/nr*R + (1-cos(nr))/(nr*nr)*dot(R,R)
+
+def logvect(R):
+    if(abs(trace(R)+1)>1e-10):
+        if(linalg.norm(R-eye(3))<=1e-10):
+            return zeros(3)
+        else:
+            phi = arccos((trace(R)-1)/2)
+            return vectfromskew(phi/(2*sin(phi))*(R-R.T))
+    else:
+        eigval, eigvect = linalg.eig(R)
+        for (i,val) in enumerate(eigval):
+            if abs((val-1)) <= 1e-10:
+                return pi*real(eigvect[:,i])
+                
+def Amat(r):
+    nr = linalg.norm(r)
+    if(nr<=1e-10):
+        return eye(3)
+    R = skewfromvect(r)
+    return eye(3) - (1-cos(nr))/(nr*nr)*R + (nr-sin(nr))/(nr*nr*nr)*dot(R,R)
+
+def Bmat0(r):
+    nr = linalg.norm(r)
+    R = skewfromvect(r)
+    return eye(3) + (1-cos(nr))/(nr*nr)*R + (nr-sin(nr))/(nr*nr*nr)*dot(R,R)
+
+def Bmat(r):
+    nr = linalg.norm(r)
+    R = skewfromvect(r)
+    return eye(3) - (1-cos(nr))/(nr*nr)*R + (nr-sin(nr))/(nr*nr*nr)*dot(R,R)
+
+def Ctensor(r):
+    nr = linalg.norm(r)
+    nr2 = nr*nr
+    nr3 = nr2*nr
