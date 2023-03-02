@@ -115,3 +115,49 @@ class LieTraj():
                 plt.plot([0, self.duration],[tau, tau], '-.',color = 'k')
             for tau in taumax:
                 plt.plot([0, self.duration],[-tau, -tau], '-.',color = 'k')
+            ylabel('Torques (N.m)')
+            xlabel('Time (s)')
+        
+def SplitTraj(Rlist,traj):
+    trajlist = []
+    chunkindex = 0
+    clist = []
+    for i in range(len(Rlist)-1):
+        while chunkindex <  len(traj.chunkslist):
+            chunkcur = traj.chunkslist[chunkindex]
+            chunknext = traj.chunkslist[chunkindex+1]
+            clist.append(chunkcur)
+            chunkindex += 1
+            if(norm(dot(Rlist[i],expmat(chunkcur.Eval(chunkcur.duration)))-dot(Rlist[i+1],expmat(chunknext.Eval(0)))))< 1e-8:
+                trajlist.append(Trajectory.PiecewisePolynomialTrajectory(clist))
+                clist = []
+                break
+    # Last traj
+    clist = []
+    while chunkindex < len(traj.chunkslist):
+        clist.append(traj.chunkslist[chunkindex])
+        chunkindex += 1
+    trajlist.append(Trajectory.PiecewisePolynomialTrajectory(clist))
+        
+    return LieTraj(Rlist,trajlist)
+      
+def SplitTraj2(Rlist,traj): 
+    trajlist = []
+    chunkindex = 0
+    clist = []
+    for i in range(len(Rlist)-1):
+        while chunkindex <  len(traj.chunkslist):
+            chunkcur = traj.chunkslist[chunkindex]
+            chunknext = traj.chunkslist[chunkindex+1]
+            
+            clist.append(chunkcur)
+            chunkindex += 1
+            if(norm(dot(Rlist[i],expmat(chunkcur.Eval(chunkcur.duration)))-dot(Rlist[i+1],expmat(chunknext.Eval(0)))))< 1e-1:
+                trajlist.append(Trajectory.PiecewisePolynomialTrajectory(clist))
+                clist = []
+                break
+    # Last traj
+    clist = []
+    while chunkindex < len(traj.chunkslist):
+        clist.append(traj.chunkslist[chunkindex])
+        chunkindex += 1
