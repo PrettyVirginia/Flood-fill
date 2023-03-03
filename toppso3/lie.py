@@ -325,3 +325,62 @@ def ComputeSO3Constraints(rtraj, taumax, discrtimestep, I = None):
         rdrd = dot(r,rd)
         
         Amat =  eye(3) - (1-cnr)/nr2*R + (nr-snr)/nr3*dot(R,R)
+        C1 = (nr-snr)/nr3 * cross(rd,rcrd)
+        C2 = -(2*cnr+nr*snr-2)/nr4 * rdrd*rcrd
+        C3 = (3*snr-nr*cnr - 2*nr)/nr5 * rdrd*cross(r,rcrd)
+        C = C1+C2+C3
+
+        Ard = dot(Amat,rd)
+        if I is None:            
+            at = Ard
+            bt = dot(Amat,rdd) + C
+        else:
+            at = dot(I,Ard)
+            bt = dot(I,dot(Amat,rdd)) + dot(I,C) + cross(Ard,dot(I,Ard))
+        
+        a[i,:3] = at
+        a[i,3:] = -at
+        b[i,:3] = bt
+        b[i,3:] = -bt
+        c[i,:3] = -taumax
+        c[i,3:] = -taumax
+    return a, b, c
+
+def RandomQuat():
+    s = random.rand()
+    sigma1 = sqrt(1-s)
+    sigma2 = sqrt(s)
+    theta1 = 2*pi*random.rand()
+    theta2 = 2*pi*random.rand()
+    w = cos(theta2)*sigma2
+    x = sin(theta1)*sigma1
+    y = cos(theta1)*sigma1
+    z = sin(theta2)*sigma2
+    return array([w,x,y,z])
+    
+
+def InterpolateSO3ZeroOmega(R0,R1,T):
+    r = logvect(dot(R0.T,R1))
+    a = ones(3)*(-2)
+    b = ones(3)*3
+    T2 = T*T
+    T3 = T2*T
+    polylist = []
+    for i in range(3):
+        polylist.append(Trajectory.Polynomial([0,0,r[i]*b[i]/T2,r[i]*a[i]/T3]))
+    chunk = Trajectory.Chunk(T,polylist)
+    return Trajectory.PiecewisePolynomialTrajectory([chunk])
+
+def Extractabc(abc):
+    lista = [float(x) for x in abc[0].split()]
+    listb = [float(x) for x in abc[1].split()]
+    listc = [float(x) for x in abc[2].split()]
+    n= len(lista)/6
+    a = zeros((n,6))
+    b = zeros((n,6))
+    c = zeros((n,6))
+    for i in range(n):
+        a[i,:] = lista[i*6:i*6+6]
+        b[i,:] = listb[i*6:i*6+6]
+        c[i,:] = listc[i*6:i*6+6]
+    return a, b, c
